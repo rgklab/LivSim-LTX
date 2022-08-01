@@ -1,7 +1,7 @@
 #!/sscc/opt/anaconda3/bin/python
 import numpy as nump
 
-ndsa = 58 #number of DSAs
+ndsa = 709 #number of DSAs
 
 ###################################################################Simulation Engine Classes#####################################################
 class Event:
@@ -66,6 +66,7 @@ class G:
     record_txID = nump.zeros(shape=(1,6)) #record patients who were transplanted; does not include those who were ever or would have been relisted
     record_doID = nump.zeros(shape=(1,5)) #record patients who were transplanted along with their corresponding donors; does not include transplant patients who were ever or would have been relisted
     record_removals = nump.zeros(shape=(1,6)) #record patients removed for any reason besides transplant/death
+    record_deathsID = nump.zeros(shape=(1, 6)) #record the patients death
     record_yrelists = nump.zeros(shape=(1,ndsa+3)) #record number of candidates relisted for transplant during the byear by DSA
     record_yregrafts = nump.zeros(shape=(1,ndsa+3)) #record number of relisted candidates who received re-transplant durint the year by DSA
     record_txIDregraft = nump.zeros(shape=(1,6)) #record patients who were re-transplanted

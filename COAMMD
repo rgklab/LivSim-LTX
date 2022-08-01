@@ -1,0 +1,20 @@
+cpython simulate.py 5 5 [0,1,1,1] 35 15 5 “C:/uoft-academic/livsim_research/LivSim-Codes-master/”
+C:/uoft-academic/livsim research/LivSim-Codes-master/FakeInput
+python simulate.py 6 1 [0,1,1,1] 35 15 5 "../SRTR_small_output/"
+screen -X -S 95484 quit
+screen -X -S 8705 quit
+screen -X -S 11655 quit
+
+python simulate.py 5 1 [1,0,0,0] 40 0 0 "../SRTR_smaller_output_sodium/"
+python simulate.py 5 1 [1,0,0,0] 40 0 0 "../SRTR_smaller_output_30/"
+
+python simulate.py 5 1 [1,0,0,0] 40 0 0 "../SRTR_smaller_output_regular/"
+
+python simulate.py 5 1 [1,0,0,0] 40 0 0 "../SRTR_submission_output_sodium/"
+python simulate.py 5 1 [1,0,0,0] 40 0 0 "../SRTR_submission_output_deepsurv/"
+
+
+LivSim-Codes-master/LivSim_Processing
+
+MELD3.0:105, Na-MELD: 111, regular-MELD: 109
+conda activate my_env

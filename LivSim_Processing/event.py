@@ -2,7 +2,7 @@ import entity, allocate
 import numpy as nump
 import datetime
 from copy import deepcopy
-ndsa = 58
+ndsa = 709
 
 #######################################################################Event Processes####################################################################################
 def Arrival(arrivalinfo, Sim, Stat, OPTN):
@@ -35,7 +35,7 @@ def Arrival(arrivalinfo, Sim, Stat, OPTN):
         
         #bound the sodium score
         effective_na = newpatient.Na
-        if effective_na <125:
+        if effective_na < 125:
             effective_na = 125
         elif effective_na > 137:
             effective_na = 137
@@ -51,9 +51,9 @@ def Arrival(arrivalinfo, Sim, Stat, OPTN):
     else: #if sodium policy not selected
 
         #bound the sodium score
-        if newpatient.MELD <6:
-            newpatient.MELD =6
-        elif newpatient.MELD >40:
+        if newpatient.MELD < 6:
+            newpatient.MELD = 6
+        elif newpatient.MELD > 40:
             newpatient.MELD = 40
 
 
@@ -98,9 +98,13 @@ def Progression(proginfo, Sim, Stat, OPTN, reps):
 
     #run if we have an actual DSA
     if progdsa >=0:
-
+        print(f'progress dsa {progdsa}')
+        if proginfo[3].astype(int) == 1:
+            a = 5
+            print('death event happen')
         #search for patient in the OPTN data structure
         for i, patient in enumerate(OPTN[progdsa]):
+
 
             #check if the id matches
             if patient.id == proginfo[1].astype(int):
@@ -116,13 +120,15 @@ def Progression(proginfo, Sim, Stat, OPTN, reps):
                     
                     #Patient dies, remove and update stats
                     Stat.ydeaths[progdsa] = Stat.ydeaths[progdsa] + 1 #increment the number of deaths by one
+                    deathidreport = [nump.floor(Sim.clock), reps, Sim.clock, patient.id, patient.MELD, patient.lMELD]
+                    Sim.record_deathsID = nump.vstack((Sim.record_deathsID,  deathidreport)) #concatenate the row oidreport to the record of removals
                     Stat.numcandidates[progdsa] = Stat.numcandidates[progdsa] - 1 #decrement the number of candidates waiting by one
                     del OPTN[progdsa][i] #delete the patient object since patient died
                     break
 
                 elif proginfo[4].astype(int) ==1:
                     
-                    #Patient removed, remove and update stats
+                    #Patient Died, remove and update stats
                     Stat.yremoved[progdsa] = Stat.yremoved[progdsa] + 1 #increment the number of removals by one
                     Stat.numcandidates[progdsa] = Stat.numcandidates[progdsa] - 1 #decrement the number of candidates waiting by one
                     
