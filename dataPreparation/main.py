@@ -2,9 +2,8 @@
 from dateutil import parser
 import matplotlib.pyplot as plt
 from dateutil.relativedelta import relativedelta
+from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME
 
-SIMULATOR_START_TIME = parser.parse('2012-01-01')
-SIMULATOR_END_TIME = parser.parse('2017-01-01')
 TRANCATE_NUM = 1000
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -33,10 +32,10 @@ def load_raw_donor_sas(path):
 
 
 def load_sas():
-    # static_file = pd.read_sas('./SRTR/cand_liin.sas7bdat')
-    #
-    # static_file['CAN_ABO'] = static_file['CAN_ABO'].str.decode('utf-8')
-    # static_file['CAN_SOURCE'] = static_file['CAN_SOURCE'].str.decode('utf-8')
+    static_file = pd.read_sas('./SRTR/cand_liin.sas7bdat')
+
+    static_file['CAN_ABO'] = static_file['CAN_ABO'].str.decode('utf-8')
+    static_file['CAN_SOURCE'] = static_file['CAN_SOURCE'].str.decode('utf-8')
     # removal count
     # status_count = static_file['CAN_REM_DT']
     # nan_count = len(status_count) - status_count.count()
@@ -44,11 +43,11 @@ def load_sas():
     # print(f'null count removal {nan_count}')
     # print(f'not null count removal {non_nan_count}')
     # Drop rows if critical columns are NaN
-    # static_file = static_file[~static_file["CAN_INIT_SRTR_LAB_MELD"].isnull()]
-    # static_file = static_file[((~static_file["CAN_DEATH_DT"].isnull()) | (~static_file["CAN_REM_DT"].isnull())) &
-    #                           (~static_file["CAN_ACTIVATE_DT"].isnull())]
-    # static_file = static_file[(static_file["CAN_LIVING_DON_TX"] == 0)]
-    # static_file.to_csv('./experiment/cand_liin.csv', index=False)
+    static_file = static_file[~static_file["CAN_INIT_SRTR_LAB_MELD"].isnull()]
+    static_file = static_file[((~static_file["CAN_DEATH_DT"].isnull()) | (~static_file["CAN_REM_DT"].isnull())) &
+                              (~static_file["CAN_ACTIVATE_DT"].isnull())]
+    static_file = static_file[(static_file["CAN_LIVING_DON_TX"] == 0)]
+    static_file.to_csv('./experiment/cand_liin.csv', index=False)
 
     # dynamic_file = pd.read_sas('./SRTR/stathist_liin.sas7bdat')
     # dynamic_file.to_csv('./experiment/stathist_liin.csv', index=False)
@@ -258,17 +257,12 @@ def post_process():
     gender_count = death_gender['CAN_GENDER'].value_counts(dropna=False)
     gender_count.to_csv('DeepsurvSRTR_gender_count.csv', index=True)
 
-    deathID = pd.read_csv('./post_processing/SodiumSRTR_RawOutput_IDdeaths.csv')
-    death_gender = static_file_removal[['PX_ID', 'CAN_GENDER']]
-    death_gender  = death_gender[death_gender['PX_ID'].isin(deathID['Death Patient ID'])]
-    gender_count = death_gender['CAN_GENDER'].value_counts(dropna=False)
-    gender_count.to_csv('SodiumSRTR_gender_count.csv', index=True)
     static_file_removal = static_file_removal[static_file_removal['CAN_DEATH_DT'] > SIMULATOR_START_TIME]['CAN_GENDER']
     total_gender_count = static_file_removal.value_counts(dropna=False)
     total_gender_count = total_gender_count.apply(lambda row: round(row*0.85))
 
     total_gender_count.to_csv('./experiment/total_death_gender_count.csv', index=False)
-    a = 5
+
 def main():
     # static_file, dynamic_file = load_sas()
     static_file, dynamic_file = load_sample_csv(False)
@@ -278,9 +272,9 @@ def main():
     patient_df, waitlist_df = create_patient(static_file_removal, dynamic_file_removal)
     available_patient = pd.concat([patient_df['Patient ID'], waitlist_df['Patient ID']], axis=0)
     create_status(dynamic_file_removal, static_file_removal, available_patient)
-    # load_raw_donor_sas('./')
-    # tx_li = pd.read_csv('./experiment/tx_li.csv', parse_dates=['REC_TX_DT'])
-    # create_donors(tx_li)
+    load_raw_donor_sas('./')
+    tx_li = pd.read_csv('./experiment/tx_li.csv', parse_dates=['REC_TX_DT'])
+    create_donors(tx_li)
 
 
 def create_geography_parnter():

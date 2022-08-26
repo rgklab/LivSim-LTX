@@ -2,8 +2,8 @@ import pandas as pd
 
 from conftest import load_origin_files, load_removal_files
 from dateutil import parser
-from livsim_file_util import calculate_MELD
-from main import SIMULATOR_START_TIME
+from dataPreparation.livsim_file_util import calculate_MELD
+from dataPreparation.main import SIMULATOR_START_TIME
 import random
 import numpy as np
 
