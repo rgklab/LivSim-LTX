@@ -2,7 +2,7 @@
 from dateutil import parser
 import matplotlib.pyplot as plt
 from dateutil.relativedelta import relativedelta
-from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME
+from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME, INPUT_DIRECTORY, OUTPUT_DIRECTORY, MELD_POLICY
 
 TRANCATE_NUM = 1000
 # Press Shift+F10 to execute it or replace it with your code.
@@ -11,12 +11,11 @@ import pandas as pd
 import numpy as np
 from livsim_file_util import get_static_features, get_dynamic_removal_features, create_column_summary, \
     get_dynamic_features, get_blood_type, get_initial_meld
-from config import OUTPUT_DIRECTORY, MELD_POLICY
-import random
+
 np.random.seed(7777)
 def get_constraint_px():
     split_PXIDs = {}
-    for pxid_split in ["train", "val", "test"]:
+    for pxid_split in ["val", "test"]:
         split_PXIDs[pxid_split] = [*map(
             float,
             open(f"./data_splits/srtr_{pxid_split}_split.txt", "r").readlines())

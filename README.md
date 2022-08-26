@@ -40,6 +40,7 @@ This function aim to remove HCC diagnosis and Status 1 patients. save the remove
 **need to change the file path in the function**.
 #### create_patient()
 Create `SRTR_Patient.csv` and `SRTR_Waitlist_matchmeld.csv`. 
+- `get_constraint_px()` need to change the file path that provide the the patient ids `srtr_val_split.txt` to provide constraint patient ids
 #### create_status()
 Create `SRTR_Status.csv`
 #### Create Donor.csv file
