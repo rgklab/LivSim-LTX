@@ -175,20 +175,6 @@ def get_initial_meld(patient_group):
         return pd.Series({'patient_meld': meld_score, 'patient_sodium': initial_row['CANHX_SERUM_SODIUM'],
                           'inactive': inactive_status})
 
-def load_deepsurv():
-    dynamic_file = pd.read_pickle('./SRTR/yingke_stathist_liin_livsim_cdtrp.pkl')
-    dynamic_file = dynamic_file.iloc[:, 1:]
-    dynamic_file_small = pd.read_csv('./experiment/stathist_liin_small.csv')
-    dynamic_file_columns = list(dynamic_file_small.columns)
-    dynamic_file_columns += ['risk']
-    dynamic_surv_cols = list(dynamic_file.columns)
-    drop_columns = []
-    for col in dynamic_surv_cols:
-        if col not in dynamic_file_columns:
-            drop_columns.append(col)
-    dynamic_file = dynamic_file.drop(columns=drop_columns)
-    dynamic_file.to_csv('./experiment/stathist_liin_deepsurv.csv', index=False)
-
 if __name__ == '__main__':
     # static_file = pd.read_csv('./experiment/cand_liin.csv')
     # status_count = static_file['CAN_SOURCE'].value_counts(dropna=False)

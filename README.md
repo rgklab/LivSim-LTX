@@ -17,12 +17,11 @@ This session provide a description on how to process SRTR data to run on Livsim.
 
 ### Constant change in `config.py`
 `OUTPUT_DIRECTORY`: The output directory that save SRTR generated files for Livsim input.
-
 `MELD_POLICY`: The policy that meld score is calcuated, choice between `regular`, `sodium`, `30`(MELD3.0), `deepsurv`.
-
+`INPUT_DIRECTORY`: The generated csv file from SRTR for data preparation  
 `SIMULATOR_START_TIME`: Start time of the simulation.
 
-`SIMULATOR_END_TIME`: End time of the simulatioin
+`SIMULATOR_END_TIME`: End time of the simulation
 ### Example execution:
 
 
@@ -34,18 +33,17 @@ It loads sas file of cand_liin.sas and stathist_linn_deepsurv.sas into csv files
 Below explain the following sub steps in `main` function.
 #### load_sample_csv()
 Load the sample static and dynamic csv for removal files or original files. 
-**need to change the file path in the function**.
 #### preprocessing_file()
 This function aim to remove HCC diagnosis and Status 1 patients. save the removed result into two files, `stathist_liin_deepsurv_removal.csv` and `cand_linn_removal.csv`.
-**need to change the file path in the function**.
 #### create_patient()
 Create `SRTR_Patient.csv` and `SRTR_Waitlist_matchmeld.csv`. 
 - `get_constraint_px()` need to change the file path that provide the the patient ids `srtr_val_split.txt` to provide constraint patient ids
+**Need to change the file path**
 #### create_status()
 Create `SRTR_Status.csv`
 #### Create Donor.csv file
-- `load_raw_donor_sas(directory_path)` create `tx_li.csv` from `tx_li.sas`file. **Need to change the file path**
--  load the `tx_li.csv` **Need to change the file path**
+- `load_raw_donor_sas(directory_path)` create `tx_li.csv` from `tx_li.sas`file. **Need to change the file path for sas**
+-  load the `tx_li.csv`
 - `create_donors(tx_li)` create `SRTR_Donors.csv`
 
 ## Run test case for data reparation

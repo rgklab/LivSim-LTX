@@ -2,7 +2,7 @@
 from dateutil import parser
 import matplotlib.pyplot as plt
 from dateutil.relativedelta import relativedelta
-from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME, INPUT_DIRECTORY, OUTPUT_DIRECTORY, MELD_POLICY
+from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME, INPUT_DIRECTORY, OUTPUT_DIRECTORY, MELD_POLICY, load
 
 TRANCATE_NUM = 1000
 # Press Shift+F10 to execute it or replace it with your code.
@@ -26,7 +26,7 @@ def load_raw_donor_sas(path):
     file = pd.read_sas(path + 'SRTR/tx_li.sas7bdat')
     file['DON_ABO'] = file['DON_ABO'].str.decode('utf-8')
 
-    file.to_csv('./experiment/tx_li.csv', index=False)
+    file.to_csv(f'{INPUT_DIRECTORY}/tx_li.csv', index=False)
     return file
 
 
@@ -46,13 +46,13 @@ def load_sas():
     static_file = static_file[((~static_file["CAN_DEATH_DT"].isnull()) | (~static_file["CAN_REM_DT"].isnull())) &
                               (~static_file["CAN_ACTIVATE_DT"].isnull())]
     static_file = static_file[(static_file["CAN_LIVING_DON_TX"] == 0)]
-    static_file.to_csv('./experiment/cand_liin.csv', index=False)
+    static_file.to_csv(f'{INPUT_DIRECTORY}/cand_liin.csv', index=False)
 
     # dynamic_file = pd.read_sas('./SRTR/stathist_liin.sas7bdat')
     # dynamic_file.to_csv('./experiment/stathist_liin.csv', index=False)
     dynamic_file = pd.read_pickle('./SRTR/yingke_stathist_liin_livsim_cdtrp.pkl')
     dynamic_file = dynamic_file.iloc[:, 1:]
-    dynamic_file.to_csv('./experiment/stathist_liin_deepsurv.csv')
+    dynamic_file.to_csv(f'{INPUT_DIRECTORY}/stathist_liin_deepsurv.csv')
     return None, dynamic_file
 
 
@@ -249,7 +249,7 @@ def foo():
 
 def post_process():
     """do post process analysis after LivSim run"""
-    static_file_removal, dynamic_file_removal = load_sample_csv(True)
+    static_file_removal, dynamic_file_removal = load_sample_csv(True, folder=INPUT_DIRECTORY)
     deathID = pd.read_csv('./post_processing/DeepsurvSRTR_RawOutput_IDdeaths.csv')
     death_gender = static_file_removal[['PX_ID', 'CAN_GENDER']]
     death_gender  = death_gender[death_gender['PX_ID'].isin(deathID['Death Patient ID'])]
@@ -264,15 +264,16 @@ def post_process():
 
 def main():
     # static_file, dynamic_file = load_sas()
-    static_file, dynamic_file = load_sample_csv(False)
+    static_file, dynamic_file = load_sample_csv(False, folder=INPUT_DIRECTORY)
     static_file_removal, dynamic_file_removal = preprocess_files(static_file, dynamic_file)
-    static_file_removal, dynamic_file_removal = load_sample_csv(True)
+    static_file_removal, dynamic_file_removal = load_sample_csv(True, folder=INPUT_DIRECTORY)
     dynamic_file_removal = dynamic_file_removal[dynamic_file_removal['CANHX_END_DT'] > SIMULATOR_START_TIME]
     patient_df, waitlist_df = create_patient(static_file_removal, dynamic_file_removal)
     available_patient = pd.concat([patient_df['Patient ID'], waitlist_df['Patient ID']], axis=0)
     create_status(dynamic_file_removal, static_file_removal, available_patient)
+    create_geography_parnter()
     load_raw_donor_sas('./')
-    tx_li = pd.read_csv('./experiment/tx_li.csv', parse_dates=['REC_TX_DT'])
+    tx_li = pd.read_csv(f'./{INPUT_DIRECTORY}/tx_li.csv', parse_dates=['REC_TX_DT'])
     create_donors(tx_li)
 
 
@@ -280,8 +281,8 @@ def create_geography_parnter():
     """create Input_Geography.txt, Input_SPartners.txt"""
 
     matrix = np.zeros((709, 709), dtype=np.int8)
-    np.savetxt('./experiment/SRTR_Input_Geography.txt', matrix, fmt='%.0f\n')
-    np.savetxt('./experiment/SRTR_Input_SPartners.txt', matrix, fmt='%.0f\n')
+    np.savetxt(f'./{OUTPUT_DIRECTORY}/SRTR_Input_Geography.txt', matrix, fmt='%.0f\n')
+    np.savetxt(f'./{OUTPUT_DIRECTORY}/SRTR_Input_SPartners.txt', matrix, fmt='%.0f\n')
 
     pass
 
@@ -304,8 +305,8 @@ def preprocess_files(static_file, dynamic_file):
                                  dynamic_file_status1['PX_ID']], ignore_index=True)
     static_file_removal = static_file[~static_file['PX_ID'].isin(patient_removal)]
     dynamic_file_removal = dynamic_file[~dynamic_file['PX_ID'].isin(patient_removal)]
-    dynamic_file_removal.to_csv('./experiment/stathist_liin_deepsurv_removal.csv', index=False)
-    static_file_removal.to_csv('./experiment/cand_linn_removal.csv', index=False)
+    dynamic_file_removal.to_csv(f'./{INPUT_DIRECTORY}/stathist_liin_deepsurv_removal.csv', index=False)
+    static_file_removal.to_csv(f'./{INPUT_DIRECTORY}/cand_linn_removal.csv', index=False)
 
     return static_file_removal, dynamic_file_removal
 
