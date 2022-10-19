@@ -309,7 +309,9 @@ def OrganArrival(organinfo, Sim, Stat, OPTN, Regions, SharingPartners, Patients_
 
                     #record the floor of the current time, repetition, current time, patient id, indicator for regional transplant, indicator for national
                     #transplant
-                    txidreport = [nump.floor(Sim.clock), reps, Sim.clock, patient.id,regtx,nattx]
+                    inactive = patient.Inactive
+                    MELD = patient.MELD
+                    txidreport = [nump.floor(Sim.clock), reps, Sim.clock, patient.id,regtx,nattx, MELD, inactive]
                     Sim.record_txID = nump.vstack((Sim.record_txID,  txidreport)) #add new record to list of transplant records
 
                     #record as follows (time of removal, repetition, patient id, patient allocation MELD, patient lab MElD)

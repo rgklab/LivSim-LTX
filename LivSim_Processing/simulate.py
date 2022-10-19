@@ -469,7 +469,7 @@ if __name__ =="__main__":
 	record_deathsID.columns = ['Year', 'Replication #', 'Death Time', 'Death Patient ID', 'Patient Allocation MELD', 'Patient Lab MELD']
 
 	record_txID = pd.DataFrame(data = Sim.record_txID)
-	record_txID.columns = ['Year', 'Replication #', 'Transplant Time', 'Transplant Patient ID', 'Regional Transplant', 'National Transplant']	
+	record_txID.columns = ['Year', 'Replication #', 'Transplant Time', 'Transplant Patient ID', 'Regional Transplant', 'National Transplant', 'Allocation MELD', 'Inactive']
 
 	record_doID = pd.DataFrame(data = Sim.record_doID)
 	record_doID.columns = ['Year', 'Replication #', 'Transplant Time', 'Transplant Patient ID', 'Donor ID']	

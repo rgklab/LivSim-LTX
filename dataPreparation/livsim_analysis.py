@@ -1,9 +1,8 @@
 import pandas as pd
-import numpy as np
 from main import get_constraint_px, load_sample_csv
 def get_gender_count():
-    patient_df = pd.read_csv('./deepsurv_result/SRTR_Patient.csv')
-    waitlist_df = pd.read_csv('./deepsurv_result/SRTR_Waitlist_matchmeld.csv')
+    patient_df = pd.read_csv('./30_result/SRTR_Patient.csv')
+    waitlist_df = pd.read_csv('./30_result/SRTR_Waitlist_matchmeld.csv')
     patient_ids =pd.concat([patient_df['Patient ID'], waitlist_df['Patient ID']], axis=0)
     px_dict = get_constraint_px()
     constraint_patient = pd.Series(px_dict['train'] + px_dict['val'])

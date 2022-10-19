@@ -63,7 +63,7 @@ class G:
     record_yMELD =nump.zeros(shape=(1,ndsa+3)) #record accumulated total transplant MELD scores of patients across DSA
     record_txDSA = nump.zeros(shape=(ndsa,ndsa)) #record the total number of organs procured from DSA i to DSA j for all years and replications
     record_txDSAoutput = nump.zeros(shape=(ndsa,ndsa)) #record the number of livers from DSA i to DSA j at replication-year(t)
-    record_txID = nump.zeros(shape=(1,6)) #record patients who were transplanted; does not include those who were ever or would have been relisted
+    record_txID = nump.zeros(shape=(1,8)) #record patients who were transplanted; does not include those who were ever or would have been relisted
     record_doID = nump.zeros(shape=(1,5)) #record patients who were transplanted along with their corresponding donors; does not include transplant patients who were ever or would have been relisted
     record_removals = nump.zeros(shape=(1,6)) #record patients removed for any reason besides transplant/death
     record_deathsID = nump.zeros(shape=(1, 6)) #record the patients death

@@ -2,7 +2,7 @@
 from dateutil import parser
 import matplotlib.pyplot as plt
 from dateutil.relativedelta import relativedelta
-from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME, INPUT_DIRECTORY, OUTPUT_DIRECTORY, MELD_POLICY, load
+from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME, INPUT_DIRECTORY, OUTPUT_DIRECTORY, MELD_POLICY
 
 TRANCATE_NUM = 1000
 # Press Shift+F10 to execute it or replace it with your code.
@@ -15,7 +15,7 @@ from livsim_file_util import get_static_features, get_dynamic_removal_features, 
 np.random.seed(7777)
 def get_constraint_px():
     split_PXIDs = {}
-    for pxid_split in ["val", "test"]:
+    for pxid_split in ["train", "val", "test"]:
         split_PXIDs[pxid_split] = [*map(
             float,
             open(f"./data_splits/srtr_{pxid_split}_split.txt", "r").readlines())
@@ -250,17 +250,33 @@ def foo():
 def post_process():
     """do post process analysis after LivSim run"""
     static_file_removal, dynamic_file_removal = load_sample_csv(True, folder=INPUT_DIRECTORY)
+    # deepsurv
     deathID = pd.read_csv('./post_processing/DeepsurvSRTR_RawOutput_IDdeaths.csv')
     death_gender = static_file_removal[['PX_ID', 'CAN_GENDER']]
     death_gender  = death_gender[death_gender['PX_ID'].isin(deathID['Death Patient ID'])]
     gender_count = death_gender['CAN_GENDER'].value_counts(dropna=False)
-    gender_count.to_csv('DeepsurvSRTR_gender_count.csv', index=True)
+    gender_count.to_csv('./post_processing/result/DeepsurvSRTR_gender_count.csv', index=True)
+
+    # MELD 3.0
+    deathID = pd.read_csv('./post_processing/30SRTR_RawOutput_IDdeaths.csv')
+    death_gender = static_file_removal[['PX_ID', 'CAN_GENDER']]
+    death_gender  = death_gender[death_gender['PX_ID'].isin(deathID['Death Patient ID'])]
+    gender_count = death_gender['CAN_GENDER'].value_counts(dropna=False)
+    gender_count.to_csv('./post_processing/result/30SRTR_gender_count.csv', index=True)
+
+    # Sodium MELD
+    deathID = pd.read_csv('./post_processing/SodiumSRTR_RawOutput_IDdeaths.csv')
+    death_gender = static_file_removal[['PX_ID', 'CAN_GENDER']]
+    death_gender  = death_gender[death_gender['PX_ID'].isin(deathID['Death Patient ID'])]
+    gender_count = death_gender['CAN_GENDER'].value_counts(dropna=False)
+    gender_count.to_csv('./post_processing/result/SodiumSRTR_gender_count.csv', index=True)
+
 
     static_file_removal = static_file_removal[static_file_removal['CAN_DEATH_DT'] > SIMULATOR_START_TIME]['CAN_GENDER']
     total_gender_count = static_file_removal.value_counts(dropna=False)
     total_gender_count = total_gender_count.apply(lambda row: round(row*0.85))
 
-    total_gender_count.to_csv('./experiment/total_death_gender_count.csv', index=False)
+    total_gender_count.to_csv('./post_processing/result/total_death_gender_count.csv', index=False)
 
 def main():
     # static_file, dynamic_file = load_sas()
@@ -312,8 +328,8 @@ def preprocess_files(static_file, dynamic_file):
 
 
 if __name__ == '__main__':
-    print(f'output_directory is {OUTPUT_DIRECTORY}')
-    print(f'scoring is {MELD_POLICY}')
-    post_process()
+    # print(f'output_directory is {OUTPUT_DIRECTORY}')
+    # print(f'scoring is {MELD_POLICY}')
+    main()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

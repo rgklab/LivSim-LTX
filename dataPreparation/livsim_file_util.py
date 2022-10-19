@@ -3,8 +3,8 @@ import numpy as np
 import csv
 from dateutil import parser
 
-SIMULATOR_START_TIME = parser.parse('2012-01-01')
-from config import MELD_POLICY
+
+from config import MELD_POLICY, SIMULATOR_START_TIME
 import random
 def calculate_MELD(row):
     """
