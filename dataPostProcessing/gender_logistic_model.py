@@ -41,6 +41,7 @@ def gender_model():
     # x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=16)
     # instantiate the model
 
+
 def create_prob_with_id():
     gender_df = load_gender_data()
     female_prob = pd.read_csv('./models/gender_female.csv')

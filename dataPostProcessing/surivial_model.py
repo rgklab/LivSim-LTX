@@ -5,7 +5,6 @@ def get_odd_weight_lambda(row):
     gender = row['female_gender']
     weight = row['Gender Weight']
     if gender == 1:
-        a = (1-weight)/weight
         return (1-weight)/weight
     else:
         return 1

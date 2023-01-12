@@ -3,9 +3,10 @@ import numpy as np
 import csv
 from dateutil import parser
 
-
 from config import MELD_POLICY, SIMULATOR_START_TIME
 import random
+
+
 def calculate_MELD(row):
     """
     calculate based on policy selected
@@ -23,8 +24,10 @@ def calculate_MELD(row):
     else:
         raise Exception('no policy set')
 
+
 def calculate_MELD_random():
     return random.randint(0, 41)
+
 
 def calculate_MELD_regular(row):
     bilirubin = row["CANHX_BILI"]
@@ -38,11 +41,14 @@ def calculate_MELD_regular(row):
     )
     return np.round(np.clip(meld_calculated, 6, 40))
 
+
 def calculate_MELD_na(row):
     # MELD + 1.32 x (137 - Na) - [0.033 x MELD*(137 - Na)]
     sodium = row["CANHX_SERUM_SODIUM"]
-    meldna_calculated = calculate_MELD_regular(row) + 1.32 * (137 - sodium) - (0.033 * calculate_MELD_regular(row) * (137 - sodium))
+    meldna_calculated = calculate_MELD_regular(row) + 1.32 * (137 - sodium) - (
+                0.033 * calculate_MELD_regular(row) * (137 - sodium))
     return np.round(np.clip(meldna_calculated, 6, 40))
+
 
 def calculate_MELD_30(row):
     bilirubin = np.clip(row["CANHX_BILI"], 1, 3)
@@ -53,16 +59,16 @@ def calculate_MELD_30(row):
     albumin = row["CANHX_ALBUMIN"]
 
     return np.round(
-            1.33*female + \
-            (4.56 * np.log(bilirubin)) + \
-            (0.82 * (137-sodium)) - \
-            (0.24 * (137-sodium)*np.log(bilirubin)) + \
-            (9.09 * np.log(INR)) + \
-            (11.14 * np.log(creatinine)) + \
-            (1.85 * (3.5 - albumin)) - \
-            (1.83 * (3.5 - albumin) * np.log(creatinine)) + \
-            6
-        )
+        1.33 * female + \
+        (4.56 * np.log(bilirubin)) + \
+        (0.82 * (137 - sodium)) - \
+        (0.24 * (137 - sodium) * np.log(bilirubin)) + \
+        (9.09 * np.log(INR)) + \
+        (11.14 * np.log(creatinine)) + \
+        (1.85 * (3.5 - albumin)) - \
+        (1.83 * (3.5 - albumin) * np.log(creatinine)) + \
+        6
+    )
 
 
 def get_dynamic_removal_features(row, is_death):
@@ -174,6 +180,7 @@ def get_initial_meld(patient_group):
         inactive_status = 1 if int(initial_row['CANHX_STAT_CD']) in (6999, 1999, 2999, 4999, 5999, 3999) else 0
         return pd.Series({'patient_meld': meld_score, 'patient_sodium': initial_row['CANHX_SERUM_SODIUM'],
                           'inactive': inactive_status})
+
 
 if __name__ == '__main__':
     # static_file = pd.read_csv('./experiment/cand_liin.csv')
