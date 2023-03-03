@@ -42,43 +42,52 @@ def load_static_csv():
 def get_race(row):
     race = row['CAN_RACE']
     if race == 8:
-        return 'white'
+        return 0  # white
     elif race == 16:
-        return 'black'
+        return 1 # black
     else:
-        return 'other'
+        return 2 # other
 
 
 def get_blood_type(row):
     """get the integer blood type in Livsim Format"""
     raw_blood_type = row['CAN_ABO']
     if raw_blood_type in ('A1', 'A', 'A2'):
-        blood_type = 'A'
+        blood_type = 0 #'A'
     elif raw_blood_type in ('A1B', 'A2B', 'AB'):
-        blood_type = 'AB'
+        blood_type = 1 #'AB'
     elif raw_blood_type in 'B':
-        blood_type = 'B'
+        blood_type = 2 #'B'
     elif raw_blood_type in 'O':
-        blood_type = 'O'
+        blood_type = 3 #'O'
     else:
         blood_type = np.nan
     return blood_type
 
+def get_yes_no(value):
+    if value == 'Y':
+        return 1
+    else:
+        return 0
 
 def get_static_row_features(row):
     blood_type = get_blood_type(row)
     race = get_race(row)
-    return blood_type, race
+
+    return blood_type, race, get_yes_no(row['CAN_PREV_ABDOM_SURG']), get_yes_no(row['CAN_BACTERIA_PERIT']), \
+           get_yes_no(row['CAN_LIFE_SUPPORT']), get_yes_no(row['CAN_WORK_INCOME']), get_yes_no(row['CAN_TIPSS']), \
+           get_yes_no(row['CAN_MALIG'])
 
 
 def get_static_feature(static):
-    # get static useful info
+    # get static useful info exclude decease origin for now.
     static_useful = static[
-        ['PX_ID', 'CAN_ABO', 'CAN_AGE_AT_LISTING', 'CAN_RACE', 'CAN_ARTIFICIAL_LI', 'CAN_ACPT_HCV_POS',
-         'CAN_LIFE_SUPPORT', 'CAN_WORK_INCOME', 'CAN_TIPSS', 'CAN_PRIMARY_PAY', 'CAN_DGN', 'CAN_EDUCATION', 'CAN_MALIG',
-         'CAN_VENTILATOR', 'CAN_PREV_PA', 'CAN_PREV_LU', 'CAN_DIAB_TY', 'CAN_GENDER']]
-    static_useful[['CAN_ABO', 'CAN_RACE']] = static_useful.apply(get_static_row_features, axis=1, result_type='expand')
-    static_useful.to_csv('./analysis_data/cand_liin_useful.csv', index=False)
+        ['PX_ID', 'CAN_ABO', 'CAN_PREV_ABDOM_SURG', 'CAN_BACTERIA_PERIT', 'CAN_AGE_AT_LISTING', 'CAN_RACE',
+         'CAN_LIFE_SUPPORT', 'CAN_WORK_INCOME', 'CAN_TIPSS', 'CAN_PRIMARY_PAY', 'CAN_EDUCATION', 'CAN_MALIG',
+         'CAN_VENTILATOR', 'CAN_PREV_PA', 'CAN_PREV_LU', 'CAN_DIAB_TY', 'CAN_GENDER', 'CAN_DEATH_DT', 'CAN_DGN']]
+    static_useful[['CAN_ABO', 'CAN_RACE', 'CAN_PREV_ABDOM_SURG', 'CAN_BACTERIA_PERIT', 'CAN_LIFE_SUPPORT', 'CAN_WORK_INCOME', 'CAN_TIPSS', 'CAN_MALIG']] = static_useful.apply(get_static_row_features, axis=1, result_type='expand')
+    # static_useful.to_csv('./analysis_data/cand_liin_useful.csv', index=False)
+    return static_useful
 
 def get_srtr_transplant():
     pass
@@ -157,7 +166,7 @@ def create_dummy():
 def normalize_columns(df, column_names):
     """use z score to normalize """
     for column_name in column_names:
-        df[column_name] = (df[column_name] -df[column_name].mean())/df[column_name].std()
+        df[column_name] = (df[column_name] - df[column_name].mean())/df[column_name].std()
 
 def final_preprocessing():
     """normalize non-categorical column use z-score and get rid of CAN_ARTIFICIAL_LI', 'CAN_PREV_PA', 'CAN_PREV_LU',
