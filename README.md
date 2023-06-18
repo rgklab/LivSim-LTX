@@ -15,10 +15,13 @@ Please cite the following papers if you use this code:
 ## Data processing part
 This session provide a description on how to process SRTR data to run on Livsim.
 
-### Constant change in `config.py`
+### Change constants in `dataPreparation/config.py`
 `OUTPUT_DIRECTORY`: The output directory that save SRTR generated files for Livsim input.
-`MELD_POLICY`: The policy that meld score is calcuated, choice between `regular`, `sodium`, `30`(MELD3.0), `deepsurv`.
-`INPUT_DIRECTORY`: The generated csv file from SRTR for data preparation  
+
+`MELD_POLICY`: The policy that meld score is calculated, choice between `regular`, `sodium`, `30`(MELD3.0), `deepsurv`.
+
+`INPUT_DIRECTORY`: The generated csv file from SRTR to use for data preparation. For sodium policy data, select directory of files generated from data preparation using sodium policy. etc.  
+
 `SIMULATOR_START_TIME`: Start time of the simulation.
 
 `SIMULATOR_END_TIME`: End time of the simulation
@@ -46,12 +49,18 @@ Create `SRTR_Status.csv`
 -  load the `tx_li.csv`
 - `create_donors(tx_li)` create `SRTR_Donors.csv`
 
-## Run test case for data reparation
+## Run test case for data preparation
 ```angular2html
 pytest dataPreparation/testing/
 ```
 
 ## Run the simulator
+### Change Constants in `LivSim_Processing/config.py`
+`REDUCED_MODEL`: set it to `True` to use reduced model (the supported version).
+
+`INPUT_DIRECTORY`: the input files directory for Livsim Simulator. Example:`dataPreparation/preprocess_result_30`
+
+`MODIFIED`:  set it to `True` to use the speed up version. `False` for the orginal version.
 ```angular2html
 ~: cd LivSim_Processing
 ~: python simulate.py 5 1 [1,0,0,0] 35 15 5 "../output/"

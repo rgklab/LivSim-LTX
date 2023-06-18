@@ -5,13 +5,10 @@ screen -X -S 95484 quit
 screen -X -S 8705 quit
 screen -X -S 11655 quit
 
-python simulate.py 5 1 [1,0,0,0] 40 0 0 "../SRTR_smaller_output_sodium/"
-python simulate.py 5 1 [1,0,0,0] 40 0 0 "../SRTR_smaller_output_30/"
 
-python simulate.py 5 1 [1,0,0,0] 40 0 0 "../SRTR_smaller_output_regular/"
 
-python simulate.py 5 1 [1,0,0,0] 40 0 0 "../SRTR_submission_output_sodium/"
-python simulate.py 5 1 [1,0,0,0] 40 0 0 "../SRTR_submission_output_deepsurv/"
+python simulate.py 4 1 [1,0,0,0] 40 0 0 "../SRTR_submission_output_sodium/"
+python simulate.py 4 1 [1,0,0,0] 40 0 0 "../SRTR_submission_output_30/"
 
 
 LivSim-Codes-master/LivSim_Processing

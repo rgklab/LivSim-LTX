@@ -1,5 +1,6 @@
-from copy import deepcopy
 import numpy as nump
+from copy import deepcopy
+
 import config
 ndsa = 709
 #####################################################Organ Allocation Procedures, Offer Routines, and Matching Functions#######################################################################
@@ -23,7 +24,10 @@ def Allocate(organ, OPTN, Sim, Regions, SharingPartners, Patients_Accept, Donor_
         corresponding DSA and patient (if transplanted)
     """
     #Compile Offer List
-    LocalList = deepcopy(OPTN[organ.DSA])#preinitialize list of potential match patients within the DSA; list of match patients already made
+    LocalList = OPTN[organ.DSA]
+    if not config.MODIFIED:
+        LocalList = deepcopy(OPTN[organ.DSA])
+    #preinitialize list of potential match patients within the DSA; list of match patients already made
     RegionalList = [] #preinitialize list of potential match patients within a region
     NationalList =[] #preinitialize list of potential match patients outside a region within the nation
 
@@ -40,24 +44,33 @@ def Allocate(organ, OPTN, Sim, Regions, SharingPartners, Patients_Accept, Donor_
                 
                 #if MELD score is over 40, set it down to 40 as the max
                 if patient.MELD > 40:
-                    patient.MELD =40
+                    patient.MELD = 40
 
 
     #iterate through list of DSAs
-    for i in range(0,ndsa):
+    for i in range(0, ndsa):
 
         #if sharing partners are implemented and if a DSA is a sharing partner of the current DSA
         #add to the regional list
         if Sim.spartners ==  1 and SharingPartners[organ.DSA,i]==1:
-            RegionalList = RegionalList + deepcopy(OPTN[i])
+            if not config.MODIFIED:
+                RegionalList = RegionalList + deepcopy(OPTN[i])
+            else:
+                RegionalList = RegionalList + OPTN[i]
 
         #if a DSA is a neighbor of a current DSA, add it to the regional list
         if Regions[organ.DSA,i] ==1 and i !=organ.DSA:
-            RegionalList = RegionalList + deepcopy(OPTN[i])
+            if not config.MODIFIED:
+                RegionalList = RegionalList + deepcopy(OPTN[i])
+            else:
+                RegionalList = RegionalList + OPTN[i]
 
         #if not, add it to the national list
-        elif Regions[organ.DSA,i] !=1 and i !=organ.DSA:
-            NationalList = NationalList + deepcopy(OPTN[i])
+        elif Regions[organ.DSA,i] != 1 and i !=organ.DSA:
+            if not config.MODIFIED:
+                NationalList = NationalList + deepcopy(OPTN[i])
+            else:
+                NationalList = NationalList + OPTN[i]
 
     #Give boost to regional candidates if applicable
     if Sim.regionalboost > 0:

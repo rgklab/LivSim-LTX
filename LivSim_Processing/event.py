@@ -98,10 +98,9 @@ def Progression(proginfo, Sim, Stat, OPTN, reps):
 
     #run if we have an actual DSA
     if progdsa >=0:
-        print(f'progress dsa {progdsa}')
+
         if proginfo[3].astype(int) == 1:
             a = 5
-            print('death event happen')
         #search for patient in the OPTN data structure
         for i, patient in enumerate(OPTN[progdsa]):
 

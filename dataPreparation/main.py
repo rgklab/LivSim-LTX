@@ -144,7 +144,7 @@ def create_patient(static_file, dynamic_file):
     patient_df = patient_df[patient_df['DSA ID1'] < 709]
     waitlist_df = waitlist_df[waitlist_df['DSA ID1'] < 709]
     static_file = static_file.drop(columns=['CAN_GENDER'])
-    dynamic_allocation = dynamic_file.merge(static_file, on='PX_ID', how='inner')
+    dynamic_allocation = dynamic_file.merge(static_file, on='PX_ID', how='inner',  suffixes=('_x', ''))
     patient_meld = dynamic_allocation.groupby(by=['PX_ID']).apply(get_initial_meld)
     patient_meld = patient_meld.reset_index().dropna()
     patient_meld.rename(columns={'PX_ID': 'Patient ID'}, inplace=True)
@@ -165,10 +165,10 @@ def create_patient(static_file, dynamic_file):
     patient_df = patient_df.sort_values(by='Patient Arrival Time')
     patient_df = patient_df.drop_duplicates()
     waitlist_df = waitlist_df.drop_duplicates()
-    px_dict = get_constraint_px()
-    constraint_patient = pd.Series(px_dict['train'] + px_dict['val'])
-    patient_df = patient_df[patient_df['Patient ID'].isin(constraint_patient)]
-    waitlist_df = waitlist_df[waitlist_df['Patient ID'].isin(constraint_patient)]
+    # px_dict = get_constraint_px()
+    # constraint_patient = pd.Series(px_dict['train'] + px_dict['val'])
+    # patient_df = patient_df[patient_df['Patient ID'].isin(constraint_patient)]
+    # waitlist_df = waitlist_df[waitlist_df['Patient ID'].isin(constraint_patient)]
     patient_df.to_csv(f'./{OUTPUT_DIRECTORY}/SRTR_Patient.csv', index=False)
     waitlist_df.to_csv(f'./{OUTPUT_DIRECTORY}/SRTR_Waitlist_matchmeld.csv', index=False)
     return patient_df, waitlist_df
@@ -280,15 +280,15 @@ def post_process():
 
 def main():
     # static_file, dynamic_file = load_sas()
-    static_file, dynamic_file = load_sample_csv(False, folder=INPUT_DIRECTORY)
-    static_file_removal, dynamic_file_removal = preprocess_files(static_file, dynamic_file)
+    # static_file, dynamic_file = load_sample_csv(False, folder=INPUT_DIRECTORY)
+    # static_file_removal, dynamic_file_removal = preprocess_files(static_file, dynamic_file)
     static_file_removal, dynamic_file_removal = load_sample_csv(True, folder=INPUT_DIRECTORY)
     dynamic_file_removal = dynamic_file_removal[dynamic_file_removal['CANHX_END_DT'] > SIMULATOR_START_TIME]
     patient_df, waitlist_df = create_patient(static_file_removal, dynamic_file_removal)
     available_patient = pd.concat([patient_df['Patient ID'], waitlist_df['Patient ID']], axis=0)
     create_status(dynamic_file_removal, static_file_removal, available_patient)
     create_geography_parnter()
-    load_raw_donor_sas('./')
+    # load_raw_donor_sas('./')
     tx_li = pd.read_csv(f'./{INPUT_DIRECTORY}/tx_li.csv', parse_dates=['REC_TX_DT'])
     create_donors(tx_li)
 
