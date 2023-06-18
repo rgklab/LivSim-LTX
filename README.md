@@ -61,6 +61,7 @@ pytest dataPreparation/testing/
 `INPUT_DIRECTORY`: the input files directory for Livsim Simulator. Example:`dataPreparation/preprocess_result_30`
 
 `MODIFIED`:  set it to `True` to use the speed up version. `False` for the orginal version.
+### Start the Simulator
 ```angular2html
 ~: cd LivSim_Processing
 ~: python simulate.py 5 1 [1,0,0,0] 35 15 5 "../output/"
