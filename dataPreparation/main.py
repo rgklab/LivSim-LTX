@@ -2,7 +2,8 @@
 from dateutil import parser
 import matplotlib.pyplot as plt
 from dateutil.relativedelta import relativedelta
-from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME, INPUT_DIRECTORY, OUTPUT_DIRECTORY, MELD_POLICY
+from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME, INPUT_DIRECTORY, \
+    OUTPUT_DIRECTORY, DATA_DIRECTORY, MELD_POLICY
 
 TRANCATE_NUM = 1000
 # Press Shift+F10 to execute it or replace it with your code.
@@ -31,7 +32,7 @@ def load_raw_donor_sas(path):
 
 
 def load_sas():
-    static_file = pd.read_sas('./SRTR/cand_liin.sas7bdat')
+    static_file = pd.read_sas(f'{DATA_DIRECTORY}/cand_liin.sas7bdat')
 
     static_file['CAN_ABO'] = static_file['CAN_ABO'].str.decode('utf-8')
     static_file['CAN_SOURCE'] = static_file['CAN_SOURCE'].str.decode('utf-8')
@@ -48,7 +49,7 @@ def load_sas():
     static_file = static_file[(static_file["CAN_LIVING_DON_TX"] == 0)]
     static_file.to_csv(f'{INPUT_DIRECTORY}/cand_liin.csv', index=False)
 
-    # dynamic_file = pd.read_sas('./SRTR/stathist_liin.sas7bdat')
+    # dynamic_file = pd.read_sas(f'{DATA_DIRECTORY}/stathist_liin.sas7bdat')
     # dynamic_file.to_csv('./experiment/stathist_liin.csv', index=False)
     dynamic_file = pd.read_pickle('./SRTR/yingke_stathist_liin_livsim_cdtrp.pkl')
     dynamic_file = dynamic_file.iloc[:, 1:]

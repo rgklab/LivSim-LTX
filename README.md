@@ -20,6 +20,8 @@ This session provide a description on how to process SRTR data to run on Livsim.
 
 `MELD_POLICY`: The policy that meld score is calculated, choice between `regular`, `sodium`, `30`(MELD3.0), `deepsurv`.
 
+`DATA_DIRECTORY`: The original raw SRTR data files.  
+
 `INPUT_DIRECTORY`: The generated csv file from SRTR to use for data preparation. For sodium policy data, select directory of files generated from data preparation using sodium policy. etc.  
 
 `SIMULATOR_START_TIME`: Start time of the simulation.
