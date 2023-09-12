@@ -51,3 +51,9 @@ dataPreparation/.idea
 dataPreparation/command
 *.pyc
 dataPreparation/SRTR
+*.pkl
+FakeInput/
+LivSim_Output/
+LivSim_Input/postprocessed
+LivSim_Input/processed
+**/LivSim_Processing/*.txt

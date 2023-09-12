@@ -1,4 +1,5 @@
 # This is a sample Python script.
+import os
 from dateutil import parser
 import matplotlib.pyplot as plt
 from dateutil.relativedelta import relativedelta
@@ -23,19 +24,30 @@ def get_constraint_px():
                                    ]
     return split_PXIDs
 
-def load_raw_donor_sas(path):
-    file = pd.read_sas(path + 'SRTR/tx_li.sas7bdat')
+def load_raw_donor_sas():
+    file = pd.read_sas(f'{DATA_DIRECTORY}/tx_li.sas7bdat')
     file['DON_ABO'] = file['DON_ABO'].str.decode('utf-8')
 
     file.to_csv(f'{INPUT_DIRECTORY}/tx_li.csv', index=False)
     return file
 
 
-def load_sas():
-    static_file = pd.read_sas(f'{DATA_DIRECTORY}/cand_liin.sas7bdat')
+def load_sas(verbose=0):
+    """
+    Requirements:
+        stathist_liin_with_risk_score.pkl is located in LivSim_Input/preprocessed/.
+        (This is a version of the stathist_liin data table that includes risk scores
+        from each of the models for evaluation).
+    """
+    if verbose:
+        print("Loading CAND_LIIN from SAS file...")
+    cand_liin = pd.read_sas(f'{DATA_DIRECTORY}/cand_liin.sas7bdat')
 
-    static_file['CAN_ABO'] = static_file['CAN_ABO'].str.decode('utf-8')
-    static_file['CAN_SOURCE'] = static_file['CAN_SOURCE'].str.decode('utf-8')
+    if verbose:
+        print("CAND_LIIN loaded successfully!")
+
+    cand_liin['CAN_ABO'] = cand_liin['CAN_ABO'].str.decode('utf-8')
+    cand_liin['CAN_SOURCE'] = cand_liin['CAN_SOURCE'].str.decode('utf-8')
     # removal count
     # status_count = static_file['CAN_REM_DT']
     # nan_count = len(status_count) - status_count.count()
@@ -43,18 +55,37 @@ def load_sas():
     # print(f'null count removal {nan_count}')
     # print(f'not null count removal {non_nan_count}')
     # Drop rows if critical columns are NaN
-    static_file = static_file[~static_file["CAN_INIT_SRTR_LAB_MELD"].isnull()]
-    static_file = static_file[((~static_file["CAN_DEATH_DT"].isnull()) | (~static_file["CAN_REM_DT"].isnull())) &
-                              (~static_file["CAN_ACTIVATE_DT"].isnull())]
-    static_file = static_file[(static_file["CAN_LIVING_DON_TX"] == 0)]
-    static_file.to_csv(f'{INPUT_DIRECTORY}/cand_liin.csv', index=False)
+    cand_liin = cand_liin[~cand_liin["CAN_INIT_SRTR_LAB_MELD"].isnull()]
+    # static_file = static_file[((~static_file["CAN_DEATH_DT"].isnull()) | (~static_file["CAN_REM_DT"].isnull())) &
+    #                           (~static_file["CAN_ACTIVATE_DT"].isnull())]
+
+    # All patients who have neither a death date or removal date are presumed to
+    # still be active on the waitlist. We right-censor these patients and impute
+    # their date of censorship with their last observed time in the data.
+    # TODO -- Michael do this.
+    cand_liin = cand_liin[(cand_liin["CAN_LIVING_DON_TX"] == 0)]
 
     # dynamic_file = pd.read_sas(f'{DATA_DIRECTORY}/stathist_liin.sas7bdat')
     # dynamic_file.to_csv('./experiment/stathist_liin.csv', index=False)
-    dynamic_file = pd.read_pickle('./SRTR/yingke_stathist_liin_livsim_cdtrp.pkl')
-    dynamic_file = dynamic_file.iloc[:, 1:]
-    dynamic_file.to_csv(f'{INPUT_DIRECTORY}/stathist_liin_deepsurv.csv')
-    return None, dynamic_file
+    if verbose:
+        print("Loading STATHIST_LIIN from pickle file...")
+
+    stathist_liin = pd.read_pickle(f'{INPUT_DIRECTORY}/stathist_liin_with_risk_score.pkl')
+
+    if verbose:
+        print("STATHIST_LIIN loaded successfully!")
+
+    stathist_liin = stathist_liin.drop('PERS_ID', axis=1)
+
+    if verbose:
+        print("Saving CAND_LIIN, STATHIST_LIIN to CSV...")
+        
+    cand_liin.to_csv(f'{INPUT_DIRECTORY}/cand_liin.csv', index=False)
+    stathist_liin.to_csv(f'{INPUT_DIRECTORY}/stathist_liin_with_risk_score.csv')
+
+    if verbose:
+        print("CAND_LIIN, STATHIST_LIIN saved successfully!")
+    return None, stathist_liin
 
 
 # Press the green button in the gutter to run the script.
@@ -64,13 +95,13 @@ def load_sample_csv(removal=False, folder='./experiment'):
         static_file = pd.read_csv(f'{folder}/cand_linn_removal.csv',
                                   parse_dates=['CAN_ACTIVATE_DT', 'CAN_LAST_ACT_STAT_DT', 'CAN_REM_DT', 'CAN_DEATH_DT',
                                                'REC_TX_DT'])
-        dynamic_file = pd.read_csv(f'{folder}/stathist_liin_deepsurv_removal.csv',
+        dynamic_file = pd.read_csv(f'{folder}/stathist_liin_with_risk_score_removal.csv',
                                    parse_dates=['CANHX_BEGIN_DT', 'CANHX_END_DT'])
     else:
         static_file = pd.read_csv(f'{folder}/cand_liin.csv',
                                   parse_dates=['CAN_ACTIVATE_DT', 'CAN_LAST_ACT_STAT_DT', 'CAN_REM_DT', 'CAN_DEATH_DT',
                                                'REC_TX_DT'])
-        dynamic_file = pd.read_csv(f'{folder}/stathist_liin_deepsurv.csv', parse_dates=['CANHX_BEGIN_DT', 'CANHX_END_DT'])
+        dynamic_file = pd.read_csv(f'{folder}/stathist_liin_with_risk_score.csv', parse_dates=['CANHX_BEGIN_DT', 'CANHX_END_DT'])
 
     return static_file, dynamic_file
 
@@ -251,45 +282,34 @@ def foo():
 def post_process():
     """do post process analysis after LivSim run"""
     static_file_removal, dynamic_file_removal = load_sample_csv(True, folder=INPUT_DIRECTORY)
-    # deepsurv
-    deathID = pd.read_csv('./post_processing/DeepsurvSRTR_RawOutput_IDdeaths.csv')
-    death_gender = static_file_removal[['PX_ID', 'CAN_GENDER']]
-    death_gender  = death_gender[death_gender['PX_ID'].isin(deathID['Death Patient ID'])]
-    gender_count = death_gender['CAN_GENDER'].value_counts(dropna=False)
-    gender_count.to_csv('./post_processing/result/DeepsurvSRTR_gender_count.csv', index=True)
 
-    # MELD 3.0
-    deathID = pd.read_csv('./post_processing/30SRTR_RawOutput_IDdeaths.csv')
+    deathID = pd.read_csv(f'../LivSim_Output/LivSim_Input_postprocessed_postprocess_result_{MELD_POLICY}_RawOutput_IDdeaths.csv')
     death_gender = static_file_removal[['PX_ID', 'CAN_GENDER']]
     death_gender  = death_gender[death_gender['PX_ID'].isin(deathID['Death Patient ID'])]
     gender_count = death_gender['CAN_GENDER'].value_counts(dropna=False)
-    gender_count.to_csv('./post_processing/result/30SRTR_gender_count.csv', index=True)
-
-    # Sodium MELD
-    deathID = pd.read_csv('./post_processing/SodiumSRTR_RawOutput_IDdeaths.csv')
-    death_gender = static_file_removal[['PX_ID', 'CAN_GENDER']]
-    death_gender  = death_gender[death_gender['PX_ID'].isin(deathID['Death Patient ID'])]
-    gender_count = death_gender['CAN_GENDER'].value_counts(dropna=False)
-    gender_count.to_csv('./post_processing/result/SodiumSRTR_gender_count.csv', index=True)
+    gender_count.to_csv('../LivSim_Output/results/SodiumSRTR_gender_count.csv', index=True)
 
 
     static_file_removal = static_file_removal[static_file_removal['CAN_DEATH_DT'] > SIMULATOR_START_TIME]['CAN_GENDER']
     total_gender_count = static_file_removal.value_counts(dropna=False)
     total_gender_count = total_gender_count.apply(lambda row: round(row*0.85))
 
-    total_gender_count.to_csv('./post_processing/result/total_death_gender_count.csv', index=False)
+    total_gender_count.to_csv('../LivSim_Output/results/total_death_gender_count.csv', index=False)
 
 def main():
     # static_file, dynamic_file = load_sas()
-    # static_file, dynamic_file = load_sample_csv(False, folder=INPUT_DIRECTORY)
-    # static_file_removal, dynamic_file_removal = preprocess_files(static_file, dynamic_file)
+    static_file, dynamic_file = load_sample_csv(False, folder=INPUT_DIRECTORY)
+    static_file_removal, dynamic_file_removal = preprocess_files(static_file, dynamic_file)
     static_file_removal, dynamic_file_removal = load_sample_csv(True, folder=INPUT_DIRECTORY)
     dynamic_file_removal = dynamic_file_removal[dynamic_file_removal['CANHX_END_DT'] > SIMULATOR_START_TIME]
+    # check for existence of output directory
+    if not os.path.exists(OUTPUT_DIRECTORY):
+        os.makedirs(OUTPUT_DIRECTORY)
     patient_df, waitlist_df = create_patient(static_file_removal, dynamic_file_removal)
     available_patient = pd.concat([patient_df['Patient ID'], waitlist_df['Patient ID']], axis=0)
     create_status(dynamic_file_removal, static_file_removal, available_patient)
     create_geography_parnter()
-    # load_raw_donor_sas('./')
+    load_raw_donor_sas()
     tx_li = pd.read_csv(f'./{INPUT_DIRECTORY}/tx_li.csv', parse_dates=['REC_TX_DT'])
     create_donors(tx_li)
 
@@ -322,7 +342,7 @@ def preprocess_files(static_file, dynamic_file):
                                  dynamic_file_status1['PX_ID']], ignore_index=True)
     static_file_removal = static_file[~static_file['PX_ID'].isin(patient_removal)]
     dynamic_file_removal = dynamic_file[~dynamic_file['PX_ID'].isin(patient_removal)]
-    dynamic_file_removal.to_csv(f'./{INPUT_DIRECTORY}/stathist_liin_deepsurv_removal.csv', index=False)
+    dynamic_file_removal.to_csv(f'./{INPUT_DIRECTORY}/stathist_liin_with_risk_score_removal.csv', index=False)
     static_file_removal.to_csv(f'./{INPUT_DIRECTORY}/cand_linn_removal.csv', index=False)
 
     return static_file_removal, dynamic_file_removal

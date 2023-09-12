@@ -11,18 +11,24 @@ def calculate_MELD(row):
     """
     calculate based on policy selected
     """
-    if MELD_POLICY.lower() == 'regular':
-        return calculate_MELD_regular(row)
-    elif MELD_POLICY.lower() == 'sodium':
-        return calculate_MELD_na(row)
-    elif MELD_POLICY.lower() == '30':
-        return calculate_MELD_30(row)
-    elif MELD_POLICY.lower() == 'random':
-        return calculate_MELD_random()
-    elif MELD_POLICY.lower() == 'deepsurv':
-        return row['risk']
-    else:
-        raise Exception('no policy set')
+    # if MELD_POLICY.lower() == 'regular':
+    #     return calculate_MELD_regular(row)
+    # elif MELD_POLICY.lower() == 'sodium':
+    #     return calculate_MELD_na(row)
+    # elif MELD_POLICY.lower() == '30':
+    #     return calculate_MELD_30(row)
+    # elif MELD_POLICY.lower() == 'random':
+    #     return calculate_MELD_random()
+    # elif MELD_POLICY.lower() == 'deepsurv':
+    #     return row['risk']
+    # else:
+    #     raise Exception('no policy set')
+
+    try:
+        return row[MELD_POLICY]
+    except:
+        print(row.columns)
+        raise Exception('Set policy does not exist in stathist_liin_with_risk_score!')
 
 
 def calculate_MELD_random():
