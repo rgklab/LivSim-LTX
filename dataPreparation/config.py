@@ -7,3 +7,4 @@ DATA_DIRECTORY = '/voyager/datasets/liver_transplant/SRTR_2023/pubsaf2303'
 MELD_POLICY = 'DynaMELD-Common' # "MELD-Na", "MELD3.0", "DynaMELD_features_delta"
 OUTPUT_DIRECTORY = f'../LivSim_Input/postprocessed/postprocess_result_{MELD_POLICY}'
 INPUT_DIRECTORY = f'../LivSim_Input/preprocessed/'
+COHORT_DIR = f"../LivSim_Input/dataset/"

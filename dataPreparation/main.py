@@ -4,7 +4,8 @@ from dateutil import parser
 import matplotlib.pyplot as plt
 from dateutil.relativedelta import relativedelta
 from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME, INPUT_DIRECTORY, \
-    OUTPUT_DIRECTORY, DATA_DIRECTORY, MELD_POLICY
+    OUTPUT_DIRECTORY, DATA_DIRECTORY, MELD_POLICY, COHORT_DIR
+from utils import vprint
 
 TRANCATE_NUM = 1000
 # Press Shift+F10 to execute it or replace it with your code.
@@ -34,20 +35,59 @@ def load_raw_donor_sas():
 
 def load_sas(verbose=0):
     """
+    Load static data files and enforce inclusion/exclusion criteria
+    and load dynamic data which contains the risks estimated from different models.
     Requirements:
         stathist_liin_with_risk_score.pkl is located in LivSim_Input/preprocessed/.
         (This is a version of the stathist_liin data table that includes risk scores
         from each of the models for evaluation).
     """
-    if verbose:
-        print("Loading CAND_LIIN from SAS file...")
+    vprint("Loading CAND_LIIN from SAS file...", verbose)
     cand_liin = pd.read_sas(f'{DATA_DIRECTORY}/cand_liin.sas7bdat')
+    vprint("CAND_LIIN loaded successfully!", verbose)
 
-    if verbose:
-        print("CAND_LIIN loaded successfully!")
+    vprint("Loading STATHIST_LIIN from pickle file...", verbose)
+    stathist_liin = pd.read_pickle(f'{INPUT_DIRECTORY}/stathist_liin_with_risk_score.pkl')
+    vprint("STATHIST_LIIN loaded successfully!", verbose)
 
+    stathist_liin = stathist_liin.drop('PERS_ID', axis=1)
+
+    vprint("Loading cohort files...", verbose)
+    cohort = set()
+    for file_dir in os.listdir(COHORT_DIR):
+        f = open(COHORT_DIR + "/" + file_dir, "r")
+        for pxid in f:
+            cohort.add(float(pxid))
+    vprint("Cohort files loaded successfully!", verbose)
+    
     cand_liin['CAN_ABO'] = cand_liin['CAN_ABO'].str.decode('utf-8')
     cand_liin['CAN_SOURCE'] = cand_liin['CAN_SOURCE'].str.decode('utf-8')
+
+    
+    # Filter by inclusion/exclusion criteria
+    cand_liin = cand_liin[cand_liin["PX_ID"].isin(cohort)]
+    stathist_liin = stathist_liin[stathist_liin["PX_ID"].isin(cohort)]
+
+    # For patients who have neither a death nor removal date, right-censor these
+    # patients and impute their date of censorship with the last observed time
+    # for that patient in the data.
+    # static_file = static_file[((~static_file["CAN_DEATH_DT"].isnull()) | (~static_file["CAN_REM_DT"].isnull())) &
+    #                           (~static_file["CAN_ACTIVATE_DT"].isnull())]
+
+    vprint("Imputing removal dates for candidates with neither death nor removal dates...", verbose)
+    for i, row in cand_liin.iterrows():
+        curr_pxid = row["PX_ID"]
+        # impute death data to too sick to transplant 5 and 13
+        if row["CAN_REM_CD"] in [5.0, 13.0]:
+            cand_liin.loc[i, "CAN_DEATH_DT"] = row["CAN_REM_DT"]
+
+        if pd.isnull(row["CAN_DEATH_DT"]) and pd.isnull(row["CAN_REM_DT"]):
+            # Impute with the last observed time for that patient in the data.
+            stathist_liin_pxid = stathist_liin[stathist_liin["PX_ID"] == curr_pxid]
+            cand_liin.loc[i, "CAN_REM_DT"] = stathist_liin_pxid["CANHX_BEGIN_DT"].max()
+    vprint("Imputed removal dates successfully!", verbose)
+
+
     # removal count
     # status_count = static_file['CAN_REM_DT']
     # nan_count = len(status_count) - status_count.count()
@@ -55,7 +95,11 @@ def load_sas(verbose=0):
     # print(f'null count removal {nan_count}')
     # print(f'not null count removal {non_nan_count}')
     # Drop rows if critical columns are NaN
-    cand_liin = cand_liin[~cand_liin["CAN_INIT_SRTR_LAB_MELD"].isnull()]
+
+    ## TODO -- replace the below with a filtration by our inclusion/exclusion
+    ## criteria. (REDUNDANT)
+    # cand_liin = cand_liin[~cand_liin["CAN_INIT_SRTR_LAB_MELD"].isnull()]
+
     # static_file = static_file[((~static_file["CAN_DEATH_DT"].isnull()) | (~static_file["CAN_REM_DT"].isnull())) &
     #                           (~static_file["CAN_ACTIVATE_DT"].isnull())]
 
@@ -63,45 +107,47 @@ def load_sas(verbose=0):
     # still be active on the waitlist. We right-censor these patients and impute
     # their date of censorship with their last observed time in the data.
     # TODO -- Michael do this.
-    cand_liin = cand_liin[(cand_liin["CAN_LIVING_DON_TX"] == 0)]
+    # cand_liin = cand_liin[(cand_liin["CAN_LIVING_DON_TX"] == 0)] ## TODO -- this should be redundant with our inclusion criteria.
+
+    # ## TODO -- merge the removal feature (HCC and status 1) of load_sample_csv here
+    # # Get rid of all Patient with HCC diagnosis and all Patient that dead before the simulator start
+    # static_file_hcc = cand_liin[cand_liin['CAN_DGN'].eq(4401) | cand_liin['CAN_DGN2'].eq(4401)]
+    # static_file_remove_WL = cand_liin[cand_liin['CAN_REM_DT'] <= SIMULATOR_START_TIME]
+    # # Get rid of all Patient with status1 in initial Status and dynamic status
+    # # static info
+    # static_file_status1 = cand_liin[
+    #     cand_liin['CAN_INIT_STAT'].eq(6011) | cand_liin['CAN_INIT_STAT'].eq(6010) | cand_liin['CAN_INIT_STAT'].eq(
+    #         6012)]
+    # # dynamic info
+    # dynamic_file_status1 = stathist_liin[
+    #     stathist_liin['CANHX_STAT_CD'].eq(6010) | stathist_liin['CANHX_STAT_CD'].eq(6011) | stathist_liin[
+    #         'CANHX_STAT_CD'].eq(6012) | stathist_liin['CANHX_STAT_CD'].eq(3010)]
+    # patient_removal = pd.concat([static_file_hcc['PX_ID'], static_file_remove_WL['PX_ID'], static_file_status1['PX_ID'],
+    #                              dynamic_file_status1['PX_ID']], ignore_index=True)
+    # cand_liin = cand_liin[~cand_liin['PX_ID'].isin(patient_removal)]
+    # stathist_liin = stathist_liin[~stathist_liin['PX_ID'].isin(patient_removal)]
 
     # dynamic_file = pd.read_sas(f'{DATA_DIRECTORY}/stathist_liin.sas7bdat')
     # dynamic_file.to_csv('./experiment/stathist_liin.csv', index=False)
-    if verbose:
-        print("Loading STATHIST_LIIN from pickle file...")
 
-    stathist_liin = pd.read_pickle(f'{INPUT_DIRECTORY}/stathist_liin_with_risk_score.pkl')
 
-    if verbose:
-        print("STATHIST_LIIN loaded successfully!")
-
-    stathist_liin = stathist_liin.drop('PERS_ID', axis=1)
-
-    if verbose:
-        print("Saving CAND_LIIN, STATHIST_LIIN to CSV...")
+    vprint("Saving CAND_LIIN, STATHIST_LIIN to CSV...", verbose)
         
     cand_liin.to_csv(f'{INPUT_DIRECTORY}/cand_liin.csv', index=False)
     stathist_liin.to_csv(f'{INPUT_DIRECTORY}/stathist_liin_with_risk_score.csv')
 
-    if verbose:
-        print("CAND_LIIN, STATHIST_LIIN saved successfully!")
-    return None, stathist_liin
+    vprint("CAND_LIIN, STATHIST_LIIN saved successfully!", verbose)
+
+    return
 
 
 # Press the green button in the gutter to run the script.
 
-def load_sample_csv(removal=False, folder='./experiment'):
-    if removal:
-        static_file = pd.read_csv(f'{folder}/cand_linn_removal.csv',
-                                  parse_dates=['CAN_ACTIVATE_DT', 'CAN_LAST_ACT_STAT_DT', 'CAN_REM_DT', 'CAN_DEATH_DT',
-                                               'REC_TX_DT'])
-        dynamic_file = pd.read_csv(f'{folder}/stathist_liin_with_risk_score_removal.csv',
-                                   parse_dates=['CANHX_BEGIN_DT', 'CANHX_END_DT'])
-    else:
-        static_file = pd.read_csv(f'{folder}/cand_liin.csv',
-                                  parse_dates=['CAN_ACTIVATE_DT', 'CAN_LAST_ACT_STAT_DT', 'CAN_REM_DT', 'CAN_DEATH_DT',
-                                               'REC_TX_DT'])
-        dynamic_file = pd.read_csv(f'{folder}/stathist_liin_with_risk_score.csv', parse_dates=['CANHX_BEGIN_DT', 'CANHX_END_DT'])
+def load_sample_csv(folder='./experiment'):
+    static_file = pd.read_csv(f'{folder}/cand_liin.csv',
+                                parse_dates=['CAN_ACTIVATE_DT', 'CAN_LAST_ACT_STAT_DT', 'CAN_REM_DT', 'CAN_DEATH_DT',
+                                            'REC_TX_DT'])
+    dynamic_file = pd.read_csv(f'{folder}/stathist_liin_with_risk_score.csv', parse_dates=['CANHX_BEGIN_DT', 'CANHX_END_DT'])
 
     return static_file, dynamic_file
 
@@ -135,8 +181,21 @@ def fill_static_info(livsim_file, static_file):
     livsim_file['Patient Arrival Time'] = static_file['CAN_ACTIVATE_DT']
     # skip the MELD Score for now
     # row specific data
-    livsim_file[['Patient ABO Blood Type', 'Patient HCC Status', 'Status1', 'Inactive']] = static_file.apply(
-        get_static_features, axis=1, result_type='expand')
+    # print(static_file.apply(
+    #     get_static_features, axis=1, result_type='expand').values)
+    data_to_fill = np.array(static_file.apply(
+        get_static_features, axis=1, result_type='expand').values)
+
+    livsim_file["Patient ABO Blood Type"] = data_to_fill[:,0]
+    livsim_file["Patient HCC Status"] = data_to_fill[:, 1]
+    livsim_file["Status1"] = data_to_fill[:, 2]
+    livsim_file["Inactive"] = data_to_fill[:, 3]
+    
+    # # raise
+    # data_to_fill = pd.DataFrame(static_file.apply(
+    #     get_static_features, axis=1, result_type='expand').values,
+    #     columns = ['Patient ABO Blood Type', 'Patient HCC Status', 'Status1', 'Inactive'])
+    # livsim_file[['Patient ABO Blood Type', 'Patient HCC Status', 'Status1', 'Inactive']] = data_to_fill
     # Sodium score
     static_dsa = static_file[['PX_ID', 'CAN_LISTING_CTR_ID']]
     livsim_file = livsim_file.merge(static_dsa, how='left', left_on='Patient ID', right_on='PX_ID')
@@ -207,11 +266,12 @@ def create_patient(static_file, dynamic_file):
 
 def create_status(dynamic_file, static_file, available_patient):
     """create the dynamic file for the status.txt"""
+    ## TODO - make too-sick to transplant patients as mortality events
     # get rid of end date before simulation start
     dynamic_file['CANHX_BEGIN_DT'][dynamic_file['CANHX_BEGIN_DT'] < SIMULATOR_START_TIME] = SIMULATOR_START_TIME
-
+    
     # handle death and removal
-    rem_death_df = static_file[['PX_ID', 'CAN_REM_DT', 'CAN_DEATH_DT', 'REC_TX_DT']]
+    rem_death_df = static_file[['PX_ID', 'CAN_REM_DT', 'CAN_DEATH_DT', 'REC_TX_DT', "CAN_REM_CD"]]
     rem_death_df = rem_death_df[rem_death_df['CAN_REM_DT'].notnull()]
     death_df = rem_death_df[rem_death_df['CAN_REM_DT'] == rem_death_df['CAN_DEATH_DT']]
     rem_df = rem_death_df[(rem_death_df['CAN_REM_DT'] != rem_death_df['CAN_DEATH_DT']) & (
@@ -298,9 +358,7 @@ def post_process():
 
 def main():
     # static_file, dynamic_file = load_sas()
-    static_file, dynamic_file = load_sample_csv(False, folder=INPUT_DIRECTORY)
-    static_file_removal, dynamic_file_removal = preprocess_files(static_file, dynamic_file)
-    static_file_removal, dynamic_file_removal = load_sample_csv(True, folder=INPUT_DIRECTORY)
+    static_file_removal, dynamic_file_removal = load_sample_csv(folder=INPUT_DIRECTORY)
     dynamic_file_removal = dynamic_file_removal[dynamic_file_removal['CANHX_END_DT'] > SIMULATOR_START_TIME]
     # check for existence of output directory
     if not os.path.exists(OUTPUT_DIRECTORY):
