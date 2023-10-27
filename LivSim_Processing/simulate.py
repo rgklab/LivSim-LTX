@@ -11,7 +11,7 @@ import csv
 import ast
 import pandas as pd
 from copy import deepcopy
-from config import INPUT_DIRECTORY
+# from config import INPUT_DIRECTORY
 import engine
 import entity
 import allocate
@@ -20,13 +20,23 @@ import cProfile, pstats, io
 
 maxtime = float(sys.argv[1])
 nreps = int(sys.argv[2])
-policy = ast.literal_eval(sys.argv[3])
-ShareU = ast.literal_eval(sys.argv[4])
-ShareL = ast.literal_eval(sys.argv[5])
+score = sys.argv[3]
 
-localboost = int(sys.argv[6])
+# policy = ast.literal_eval(sys.argv[3])
+# ShareU = ast.literal_eval(sys.argv[4])
+# ShareL = ast.literal_eval(sys.argv[5])
+# localboost = int(sys.argv[6])
+# directory = sys.argv[7]
 
-directory = sys.argv[7]
+policy = [0, 0, 0, 0]
+ShareU = 999999
+ShareL = -999999
+localboost = 0
+directory = f'../LivSim_Output/{score}/'
+INPUT_DIRECTORY = f'LivSim_Input/postprocessed/{score}'
+
+if not os.path.exists(directory):
+    os.makedirs(directory)
 
 
 if __name__ =="__main__":
@@ -490,79 +500,79 @@ if __name__ =="__main__":
 	record_relists.columns = ['Year', 'Replication #', '1st Transplant Time', 'Patient ID', 'Patient Allocation MELD at First Transplant Time', 'Patient Earliest Re-Transplant Time']	
 
 	#Output Results
-	nump.savetxt(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_Output_deaths.txt", Sim.record_deaths, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_deaths.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_Output_deaths.csv", sep=',', encoding='utf-8', index = False)
+	nump.savetxt(directory + "Output_deaths.txt", Sim.record_deaths, fmt='%1.4e', delimiter='\t', newline='\n')
+	record_deaths.to_csv(directory + "Output_deaths.csv", sep=',', encoding='utf-8', index = False)
 
 	nump.savetxt(directory + "Output_mr_disparity_mean.txt", Sim.record_mr_disparity_mean, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_mr_disparity_mean.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_Output_mr_disparity_mean.csv", sep=',', encoding='utf-8', index = False)
+	record_mr_disparity_mean.to_csv(directory + "Output_mr_disparity_mean.csv", sep=',', encoding='utf-8', index = False)
 
 	nump.savetxt(directory + "Output_mr_disparity_std.txt", Sim.record_mr_disparity_std, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_mr_disparity_std.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_Output_mr_disparity_std.csv", sep=',', encoding = 'utf-8', index = False)
+	record_mr_disparity_std.to_csv(directory + "Output_mr_disparity_std.csv", sep=',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "Output_meld_disparity_mean.txt", Sim.record_meld_disparity_mean, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_meld_disparity_mean.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_Output_meld_disparity_mean.csv", sep=',', encoding = 'utf-8', index = False)
+	record_meld_disparity_mean.to_csv(directory + "Output_meld_disparity_mean.csv", sep=',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "Output_meld_disparity_std.txt", Sim.record_meld_disparity_std, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_meld_disparity_std.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_Output_meld_disparity_std.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_meld_disparity_std.to_csv(directory + "Output_meld_disparity_std.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "Output_meld_median_mean.txt", Sim.record_medMELDmean, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_medMELDmean.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_Output_meld_median_mean.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_medMELDmean.to_csv(directory + "Output_meld_median_mean.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "Output_meld_median_std.txt", Sim.record_medMELDstd, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_medMELDstd.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_Output_meld_median_std.csv", sep =',', encoding = 'utf-8', index = False)
+	record_medMELDstd.to_csv(directory + "Output_meld_median_std.csv", sep =',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_ydeaths.txt", Sim.record_ydeaths, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_ydeaths.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_ydeaths.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_ydeaths.to_csv(directory + "RawOutput_ydeaths.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_ytransplants.txt", Sim.record_ytransplants, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_ytransplants.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_ytransplants.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_ytransplants.to_csv(directory + "RawOutput_ytransplants.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_yarrivals.txt", Sim.record_yarrivals, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_yarrivals.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}RawOutput_yarrivals.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_yarrivals.to_csv(directory + "RawOutput_yarrivals.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_ycandidates.txt", Sim.record_ycandidates, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_ycandidates.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_ycandidates.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_ycandidates.to_csv(directory + "RawOutput_ycandidates.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_yremoved.txt", Sim.record_yremoved, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_yremoved.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_yremoved.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_yremoved.to_csv(directory + "RawOutput_yremoved.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_ywait.txt", Sim.record_ywait, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_ywait.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_ywait.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_ywait.to_csv(directory + "RawOutput_ywait.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_yMELD.txt", Sim.record_yMELD, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_yMELD.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_yMELD.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_yMELD.to_csv(directory + "RawOutput_yMELD.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_DSAs.txt", Sim.record_txDSA, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_txDSA.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_DSAs.csv", sep = ',', encoding = 'utf-8')
+	record_txDSA.to_csv(directory + "RawOutput_DSAs.csv", sep = ',', encoding = 'utf-8')
 
 	nump.savetxt(directory + "RawOutput_DSAs2.txt", Sim.record_txDSAoutput, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_txDSAoutput.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_DSAs2.csv", sep = ',', encoding = 'utf-8')
+	record_txDSAoutput.to_csv(directory + "RawOutput_DSAs2.csv", sep = ',', encoding = 'utf-8')
 
 	nump.savetxt(directory + "RawOutput_removals.txt", Sim.record_removals, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_removals.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_removals.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_removals.to_csv(directory + "RawOutput_removals.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_IDdeaths.txt", Sim.record_deathsID, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_deathsID.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_IDdeaths.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_deathsID.to_csv(directory + "RawOutput_IDdeaths.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_TxID.txt", Sim.record_txID, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_txID.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_TxID.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_txID.to_csv(directory + "RawOutput_TxID.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_DoID.txt", Sim.record_doID, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_doID.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_DoID.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_doID.to_csv(directory + "RawOutput_DoID.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_yrelists.txt", Sim.record_yrelists, fmt='%1.4e', delimiter='\t', newline='\n')
-	yrelists.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_yrelists.csv", sep = ',', encoding = 'utf-8', index = False)
+	yrelists.to_csv(directory + "RawOutput_yrelists.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_yregrafts.txt", Sim.record_yregrafts, fmt='%1.4e', delimiter='\t', newline='\n')
-	yregrafts.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_yregrafts.csv", sep = ',', encoding = 'utf-8', index = False)
+	yregrafts.to_csv(directory + "RawOutput_yregrafts.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_TxIDregraft.txt", Sim.record_txIDregraft, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_txIDregraft.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_TxIDregraft.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_txIDregraft.to_csv(directory + "RawOutput_TxIDregraft.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_DoIDregraft.txt", Sim.record_doIDregraft, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_doIDregraft.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_DoIDregraft.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_doIDregraft.to_csv(directory + "RawOutput_DoIDregraft.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	nump.savetxt(directory + "RawOutput_Relistid.txt", Sim.record_relists, fmt='%1.4e', delimiter='\t', newline='\n')
-	record_relists.to_csv(directory + f"{INPUT_DIRECTORY.replace('/', '_')}_RawOutput_Relistid.csv", sep = ',', encoding = 'utf-8', index = False)
+	record_relists.to_csv(directory + "RawOutput_Relistid.csv", sep = ',', encoding = 'utf-8', index = False)
 
 	print('Simulation Finished @ ',datetime.datetime.now().time())

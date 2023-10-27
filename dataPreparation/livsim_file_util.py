@@ -3,11 +3,12 @@ import numpy as np
 import csv
 from dateutil import parser
 
-from config import MELD_POLICY, SIMULATOR_START_TIME
+# from config import MELD_POLICY, SIMULATOR_START_TIME
+from config import SIMULATOR_START_TIME
 import random
 
 
-def calculate_MELD(row):
+def calculate_MELD(row, score: str = 'MELD'):
     """
     calculate based on policy selected
     """
@@ -25,7 +26,7 @@ def calculate_MELD(row):
     #     raise Exception('no policy set')
 
     try:
-        return row[MELD_POLICY]
+        return row[score]
     except:
         print(row.columns)
         raise Exception('Set policy does not exist in stathist_liin_with_risk_score!')
@@ -153,8 +154,8 @@ def create_column_summary(active_col, column_name):
     final_df.to_csv(f'{column_name}_description.csv', index=False)
 
 
-def get_dynamic_features(row):
-    meld_score = calculate_MELD(row)
+def get_dynamic_features(row, score: str = 'MELD'):
+    meld_score = calculate_MELD(row, score)
 
     patient_id = row['PX_ID']
     dsa = np.nan
@@ -164,7 +165,7 @@ def get_dynamic_features(row):
     return 1, patient_id, status_event_time, 0, 0, meld_score, meld_score, sodium, dsa, dsa, inactive_status
 
 
-def get_initial_meld(patient_group):
+def get_initial_meld(patient_group, score: str = 'MELD'):
     # patient_group = patient_group[]
     patient_group = patient_group[((patient_group['CANHX_BEGIN_DT'] <= SIMULATOR_START_TIME) & (
             patient_group['CANHX_END_DT'] >= SIMULATOR_START_TIME)) | (
@@ -182,7 +183,7 @@ def get_initial_meld(patient_group):
     else:
         patient_group = patient_group.sort_values(by='CANHX_BEGIN_DT', ascending=False)
         initial_row = patient_group.iloc[0]
-        meld_score = calculate_MELD(initial_row)
+        meld_score = calculate_MELD(initial_row, score)
         inactive_status = 1 if int(initial_row['CANHX_STAT_CD']) in (6999, 1999, 2999, 4999, 5999, 3999) else 0
         return pd.Series({'patient_meld': meld_score, 'patient_sodium': initial_row['CANHX_SERUM_SODIUM'],
                           'inactive': inactive_status})

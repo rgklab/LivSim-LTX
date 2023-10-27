@@ -4,7 +4,7 @@ from dateutil import parser
 import matplotlib.pyplot as plt
 from dateutil.relativedelta import relativedelta
 from config import SIMULATOR_START_TIME, SIMULATOR_END_TIME, INPUT_DIRECTORY, \
-    OUTPUT_DIRECTORY, DATA_DIRECTORY, MELD_POLICY, COHORT_DIR
+    OUTPUT_DIRECTORY, DATA_DIRECTORY, COHORT_DIR
 from utils import vprint
 
 TRANCATE_NUM = 1000
@@ -172,7 +172,7 @@ def create_donors(organ_file):
     donor_df = donor_df[donor_df['DSA ID1'] < 709]
     donor_df = donor_df.sample(frac=0.3145)
     donor_df = donor_df.sort_values(by='Donor Arrival Time')
-    donor_df.to_csv(f'./{OUTPUT_DIRECTORY}/SRTR_Donors.csv', index=False)
+    donor_df.to_csv(f'./{OUTPUT_RESULT_DIRECTORY}/SRTR_Donors.csv', index=False)
 
 
 def fill_static_info(livsim_file, static_file):
@@ -209,7 +209,7 @@ def fill_static_info(livsim_file, static_file):
     return livsim_file
 
 
-def create_patient(static_file, dynamic_file):
+def create_patient(static_file, dynamic_file, score: str = 'MELD'):
     """ create patient.txt and Waitlist_match_MELD.txt one is before the simulation start, one is after the simulation start"""
     patient_df = pd.DataFrame(
         {'Replication#': 1, 'Patient ID': [], 'DSA ID1': [], 'DSA ID2': [], 'Patient Arrival Time': [],
@@ -236,7 +236,7 @@ def create_patient(static_file, dynamic_file):
     waitlist_df = waitlist_df[waitlist_df['DSA ID1'] < 709]
     static_file = static_file.drop(columns=['CAN_GENDER'])
     dynamic_allocation = dynamic_file.merge(static_file, on='PX_ID', how='inner',  suffixes=('_x', ''))
-    patient_meld = dynamic_allocation.groupby(by=['PX_ID']).apply(get_initial_meld)
+    patient_meld = dynamic_allocation.groupby(by=['PX_ID']).apply(get_initial_meld, score=score)
     patient_meld = patient_meld.reset_index().dropna()
     patient_meld.rename(columns={'PX_ID': 'Patient ID'}, inplace=True)
     patient_df = patient_df.merge(patient_meld, on='Patient ID', how='inner')
@@ -260,11 +260,11 @@ def create_patient(static_file, dynamic_file):
     # constraint_patient = pd.Series(px_dict['train'] + px_dict['val'])
     # patient_df = patient_df[patient_df['Patient ID'].isin(constraint_patient)]
     # waitlist_df = waitlist_df[waitlist_df['Patient ID'].isin(constraint_patient)]
-    patient_df.to_csv(f'./{OUTPUT_DIRECTORY}/SRTR_Patient.csv', index=False)
-    waitlist_df.to_csv(f'./{OUTPUT_DIRECTORY}/SRTR_Waitlist_matchmeld.csv', index=False)
+    patient_df.to_csv(f'./{OUTPUT_RESULT_DIRECTORY}/SRTR_Patient.csv', index=False)
+    waitlist_df.to_csv(f'./{OUTPUT_RESULT_DIRECTORY}/SRTR_Waitlist_matchmeld.csv', index=False)
     return patient_df, waitlist_df
 
-def create_status(dynamic_file, static_file, available_patient):
+def create_status(dynamic_file, static_file, available_patient, score: str = 'MELD'):
     """create the dynamic file for the status.txt"""
     ## TODO - make too-sick to transplant patients as mortality events
     # get rid of end date before simulation start
@@ -284,7 +284,7 @@ def create_status(dynamic_file, static_file, available_patient):
     removal_result = rem_df.apply(lambda row: get_dynamic_removal_features(row, False), axis=1, result_type='expand')
     # Meld score calculation
     normal_df = dynamic_file[dynamic_file['CAN_REM_DT'] != dynamic_file['CANHX_BEGIN_DT']]
-    normal_result = normal_df.apply(lambda row: get_dynamic_features(row), axis=1, result_type='expand')
+    normal_result = normal_df.apply(lambda row: get_dynamic_features(row, score), axis=1, result_type='expand')
     status_df = pd.concat([death_result, removal_result, normal_result], ignore_index=True)
     status_df.columns = ['Replication#', 'Patient ID', 'Status Event Time', 'Dies', 'Removed from Waitlist',
                          'Updated Allocation MELD', 'Updated Lab MELD', 'Updated Sodium', 'DSA ID1', 'DSA ID2',
@@ -304,36 +304,40 @@ def create_status(dynamic_file, static_file, available_patient):
     status_df = status_df[status_df['Patient ID'].isin(available_patient)]
     status_df = status_df.sort_values(by='Status Event Time')
     status_df = status_df.drop_duplicates()
-    status_df.to_csv(f'./{OUTPUT_DIRECTORY}/SRTR_Status.csv', index=False)
+    status_df.to_csv(f'./{OUTPUT_RESULT_DIRECTORY}/SRTR_Status.csv', index=False)
 
 
-def post_process():
+def post_process(score: str = 'MELD'):
     """do post process analysis after LivSim run"""
-    static_file_removal, dynamic_file_removal = load_sample_csv(True, folder=INPUT_DIRECTORY)
+    results_path = f'../LivSim_Output/{score}/results/'
+    if not os.path.exists(results_path):
+        os.makedirs(results_path)
+    static_file_removal, dynamic_file_removal = load_sample_csv(folder=INPUT_DIRECTORY)
 
-    deathID = pd.read_csv(f'../LivSim_Output/LivSim_Input_postprocessed_postprocess_result_{MELD_POLICY}_RawOutput_IDdeaths.csv')
+    deathID = pd.read_csv(f'../LivSim_Output/{score}/RawOutput_IDdeaths.csv')
     death_gender = static_file_removal[['PX_ID', 'CAN_GENDER']]
     death_gender  = death_gender[death_gender['PX_ID'].isin(deathID['Death Patient ID'])]
     gender_count = death_gender['CAN_GENDER'].value_counts(dropna=False)
-    gender_count.to_csv('../LivSim_Output/results/SodiumSRTR_gender_count.csv', index=True)
-
+    gender_count.to_csv(f'{results_path}/new_SRTR_gender_count.csv', index=True)
 
     static_file_removal = static_file_removal[static_file_removal['CAN_DEATH_DT'] > SIMULATOR_START_TIME]['CAN_GENDER']
     total_gender_count = static_file_removal.value_counts(dropna=False)
     total_gender_count = total_gender_count.apply(lambda row: round(row*0.85))
 
-    total_gender_count.to_csv('../LivSim_Output/results/total_death_gender_count.csv', index=False)
+    total_gender_count.to_csv(f'{results_path}/total_death_gender_count.csv', index=False)
 
-def main():
+def main(score: str = "MELD"):
     # static_file, dynamic_file = load_sas()
     static_file_removal, dynamic_file_removal = load_sample_csv(folder=INPUT_DIRECTORY)
     dynamic_file_removal = dynamic_file_removal[dynamic_file_removal['CANHX_END_DT'] > SIMULATOR_START_TIME]
     # check for existence of output directory
-    if not os.path.exists(OUTPUT_DIRECTORY):
-        os.makedirs(OUTPUT_DIRECTORY)
-    patient_df, waitlist_df = create_patient(static_file_removal, dynamic_file_removal)
+    global OUTPUT_RESULT_DIRECTORY
+    OUTPUT_RESULT_DIRECTORY = OUTPUT_DIRECTORY+'/'+score
+    if not os.path.exists(OUTPUT_RESULT_DIRECTORY):
+        os.makedirs(OUTPUT_RESULT_DIRECTORY)
+    patient_df, waitlist_df = create_patient(static_file_removal, dynamic_file_removal, score)
     available_patient = pd.concat([patient_df['Patient ID'], waitlist_df['Patient ID']], axis=0)
-    create_status(dynamic_file_removal, static_file_removal, available_patient)
+    create_status(dynamic_file_removal, static_file_removal, available_patient, score)
     create_geography_parnter()
     load_raw_donor_sas()
     tx_li = pd.read_csv(f'./{INPUT_DIRECTORY}/tx_li.csv', parse_dates=['REC_TX_DT'])
@@ -344,8 +348,8 @@ def create_geography_parnter():
     """create Input_Geography.txt, Input_SPartners.txt"""
 
     matrix = np.zeros((709, 709), dtype=np.int8)
-    np.savetxt(f'./{OUTPUT_DIRECTORY}/SRTR_Input_Geography.txt', matrix, fmt='%.0f\n')
-    np.savetxt(f'./{OUTPUT_DIRECTORY}/SRTR_Input_SPartners.txt', matrix, fmt='%.0f\n')
+    np.savetxt(f'./{OUTPUT_RESULT_DIRECTORY}/SRTR_Input_Geography.txt', matrix, fmt='%.0f\n')
+    np.savetxt(f'./{OUTPUT_RESULT_DIRECTORY}/SRTR_Input_SPartners.txt', matrix, fmt='%.0f\n')
 
     pass
 

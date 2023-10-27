@@ -1,505 +1,486 @@
-         56386040 function calls (56352933 primitive calls) in 48.731 seconds
+         77166021 function calls (77126644 primitive calls) in 59.455 seconds
 
    Ordered by: cumulative time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     9298    0.308    0.000   45.709    0.005 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:196(OrganArrival)
-     9298    7.534    0.001   44.949    0.005 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/allocate.py:7(Allocate)
-     9295    1.016    0.000   35.699    0.004 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/allocate.py:172(MatchRun)
-   133200    2.214    0.000   31.902    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/allocate.py:242(Offer)
-   133200    2.316    0.000   27.603    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:771(loadtxt)
-   133200    0.193    0.000   14.655    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:155(open)
-   133200    0.316    0.000   12.430    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:487(open)
-   133200    0.369    0.000    8.235    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:344(_findfile)
-   266400    2.560    0.000    5.879    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:972(read_data)
-   133200    0.423    0.000    3.442    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:375(abspath)
-  2578919    2.781    0.000    2.781    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/allocate.py:207(MatchCheck)
-   399600    0.730    0.000    2.769    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:302(_isurl)
-   532801    0.889    0.000    2.609    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/urllib/parse.py:366(urlparse)
-   266400    0.499    0.000    2.136    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:293(_possible_names)
-   133200    0.131    0.000    2.032    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:246(__init__)
-   133204    1.617    0.000    2.014    0.000 {built-in method io.open}
-446207/414959    1.709    0.000    1.956    0.000 {built-in method numpy.core._multiarray_umath.implement_array_function}
-   266400    0.835    0.000    1.949    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:417(_sanitize_relative_path)
-   133200    0.273    0.000    1.901    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:372(abspath)
-   399600    0.403    0.000    1.880    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:263(_iszip)
-   932400    1.004    0.000    1.761    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:963(split_line)
-    18597    0.832    0.000    1.717    0.000 {built-in method builtins.sorted}
-   399600    0.914    0.000    1.368    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:334(normpath)
-   133200    1.131    0.000    1.340    0.000 {built-in method builtins.next}
-   266400    0.169    0.000    1.236    0.000 <__array_function__ internals>:2(dot)
-    92318    0.476    0.000    1.118    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:82(Progression)
-   399600    0.321    0.000    1.017    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:117(splitext)
-   532801    0.583    0.000    1.005    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/urllib/parse.py:417(urlsplit)
-   147693    0.919    0.000    0.919    0.000 {method 'uniform' of 'numpy.random.mtrand.RandomState' objects}
-   109308    0.895    0.000    0.895    0.000 {method 'pop' of 'list' objects}
-  6549937    0.884    0.000    0.884    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/allocate.py:91(<lambda>)
-   799200    0.312    0.000    0.881    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:999(<listcomp>)
-   266400    0.569    0.000    0.833    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:71(join)
-   932400    0.541    0.000    0.793    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_internal.py:908(__call__)
-    14809    0.011    0.000    0.727    0.000 <__array_function__ internals>:2(vstack)
-  1210274    0.698    0.000    0.698    0.000 {method 'astype' of 'numpy.generic' objects}
-   133200    0.074    0.000    0.691    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:431(exists)
-    14809    0.024    0.000    0.687    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/shape_base.py:222(vstack)
-   666000    0.507    0.000    0.684    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:130(keys)
-   133200    0.060    0.000    0.619    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:280(_splitzipext)
-   320230    0.619    0.000    0.619    0.000 {built-in method builtins.min}
-   133200    0.102    0.000    0.616    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/genericpath.py:16(exists)
-   399600    0.425    0.000    0.605    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/genericpath.py:121(_splitext)
-  1065602    0.497    0.000    0.582    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/urllib/parse.py:110(_coerce_args)
-   799200    0.466    0.000    0.569    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:732(floatconv)
-    14899    0.012    0.000    0.567    0.000 <__array_function__ internals>:2(concatenate)
-2946914/2946902    0.416    0.000    0.533    0.000 {built-in method builtins.isinstance}
-   133202    0.514    0.000    0.514    0.000 {built-in method posix.stat}
-   399601    0.212    0.000    0.500    0.000 {method 'join' of 'str' objects}
-   399618    0.323    0.000    0.479    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/codecs.py:319(decode)
-   133201    0.419    0.000    0.419    0.000 {method 'close' of '_io.TextIOWrapper' objects}
-        5    0.021    0.004    0.409    0.082 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:362(Year)
-   133200    0.111    0.000    0.342    0.000 <__array_function__ internals>:2(squeeze)
-   133200    0.239    0.000    0.320    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:729(_getconv)
-   133232    0.312    0.000    0.312    0.000 {built-in method numpy.array}
-   932400    0.300    0.000    0.300    0.000 {method 'split' of 're.Pattern' objects}
-  3085464    0.293    0.000    0.293    0.000 {method 'append' of 'list' objects}
-   266400    0.104    0.000    0.288    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:1024(<genexpr>)
-  1332013    0.287    0.000    0.287    0.000 {method 'split' of 'str' objects}
-   133201    0.115    0.000    0.283    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/_bootlocale.py:33(getpreferredencoding)
-   666000    0.212    0.000    0.266    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:131(splitdrive)
-  2664000    0.257    0.000    0.257    0.000 {method 'lstrip' of 'str' objects}
-   133200    0.053    0.000    0.234    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/re.py:250(compile)
-2945464/2945418    0.232    0.000    0.232    0.000 {built-in method builtins.len}
-   133200    0.220    0.000    0.220    0.000 {built-in method posix.getcwd}
-   133200    0.106    0.000    0.218    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:60(isabs)
-  1065600    0.211    0.000    0.211    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_iotools.py:11(_decode_line)
-   932405    0.192    0.000    0.192    0.000 {method 'startswith' of 'str' objects}
-  1998003    0.186    0.000    0.186    0.000 {built-in method posix.fspath}
-   133200    0.084    0.000    0.184    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/re.py:270(escape)
-   133200    0.123    0.000    0.181    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/re.py:289(_compile)
-   799200    0.180    0.000    0.180    0.000 {method 'rfind' of 'str' objects}
-   133201    0.168    0.000    0.168    0.000 {built-in method _locale.nl_langinfo}
-   399618    0.156    0.000    0.156    0.000 {built-in method _codecs.utf_8_decode}
-   399600    0.098    0.000    0.145    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:41(_get_sep)
-   532818    0.141    0.000    0.141    0.000 {built-in method __new__ of type object at 0x55ff780f9ac0}
-   932403    0.138    0.000    0.138    0.000 {method 'strip' of 'str' objects}
-   535048    0.134    0.000    0.134    0.000 {method 'get' of 'dict' objects}
-   133200    0.110    0.000    0.129    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:916(flatten_dtype_internal)
-   799200    0.122    0.000    0.122    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:946(pack_items)
-   799200    0.118    0.000    0.118    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:103(_load)
-   133228    0.042    0.000    0.117    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/abc.py:96(__instancecheck__)
-   133203    0.082    0.000    0.113    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/codecs.py:309(__init__)
-  1065602    0.109    0.000    0.109    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/urllib/parse.py:99(_noop)
-   133200    0.074    0.000    0.105    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:1022(<listcomp>)
-   799209    0.103    0.000    0.103    0.000 {method 'lower' of 'str' objects}
-     7687    0.060    0.000    0.103    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:8(Arrival)
-   133200    0.071    0.000    0.102    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1441(squeeze)
-    14809    0.010    0.000    0.095    0.000 <__array_function__ internals>:2(atleast_2d)
-   133200    0.088    0.000    0.088    0.000 {method 'translate' of 'str' objects}
-   133200    0.056    0.000    0.083    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:256(__del__)
-   801902    0.081    0.000    0.081    0.000 {built-in method builtins.issubclass}
-   399611    0.079    0.000    0.079    0.000 {method 'endswith' of 'str' objects}
-   133200    0.060    0.000    0.076    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:149(__getitem__)
-   666001    0.075    0.000    0.075    0.000 {method 'keys' of 'dict' objects}
-   133228    0.075    0.000    0.075    0.000 {built-in method _abc._abc_instancecheck}
-    14809    0.038    0.000    0.074    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/shape_base.py:81(atleast_2d)
-   266400    0.065    0.000    0.065    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_internal.py:906(__init__)
-   133200    0.058    0.000    0.058    0.000 {built-in method builtins.iter}
-   133200    0.043    0.000    0.043    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:1140(<listcomp>)
-   133200    0.041    0.000    0.041    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:1116(<listcomp>)
-   266400    0.040    0.000    0.040    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/multiarray.py:736(dot)
-   133200    0.039    0.000    0.039    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_iotools.py:38(_is_string_like)
-    31868    0.032    0.000    0.032    0.000 {built-in method numpy.asanyarray}
-   133203    0.032    0.000    0.032    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/codecs.py:260(__init__)
-   148432    0.031    0.000    0.031    0.000 {built-in method builtins.hasattr}
-   133215    0.031    0.000    0.031    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
-   109308    0.024    0.000    0.024    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/engine.py:15(__init__)
-   133200    0.023    0.000    0.023    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1437(_squeeze_dispatcher)
-   133808    0.023    0.000    0.023    0.000 {built-in method builtins.getattr}
-   133310    0.019    0.000    0.019    0.000 {method 'items' of 'dict' objects}
-      370    0.000    0.000    0.017    0.000 <__array_function__ internals>:2(nanmedian)
-      370    0.001    0.000    0.016    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1028(nanmedian)
-    14809    0.006    0.000    0.016    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/shape_base.py:218(_vhstack_dispatcher)
-        1    0.015    0.015    0.015    0.015 simulate.py:145(<listcomp>)
-  740/370    0.001    0.000    0.015    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/function_base.py:3513(_ureduce)
-      370    0.000    0.000    0.014    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:977(_nanmedian)
-      370    0.000    0.000    0.014    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:960(_nanmedian1d)
-      370    0.000    0.000    0.012    0.000 <__array_function__ internals>:2(median)
-      370    0.000    0.000    0.011    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/function_base.py:3573(median)
-      370    0.002    0.000    0.010    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/function_base.py:3663(_median)
-    14809    0.005    0.000    0.010    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/shape_base.py:207(_arrays_for_stack_dispatcher)
-      370    0.000    0.000    0.005    0.000 <__array_function__ internals>:2(mean)
-      370    0.001    0.000    0.004    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3322(mean)
+     9298    0.392    0.000   55.112    0.006 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:196(OrganArrival)
+     9298   10.690    0.001   54.139    0.006 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/allocate.py:7(Allocate)
+     9295    1.051    0.000   41.024    0.004 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/allocate.py:172(MatchRun)
+   156793    2.594    0.000   37.119    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/allocate.py:242(Offer)
+   156793    2.679    0.000   32.066    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:771(loadtxt)
+   156793    0.239    0.000   17.027    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:155(open)
+   156793    0.372    0.000   14.423    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:487(open)
+   156793    0.423    0.000    9.535    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:344(_findfile)
+   313586    2.957    0.000    6.762    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:972(read_data)
+   156793    0.481    0.000    3.990    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:375(abspath)
+   470379    0.835    0.000    3.184    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:302(_isurl)
+   627173    1.008    0.000    3.005    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/urllib/parse.py:366(urlparse)
+  2484137    2.854    0.000    2.854    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/allocate.py:207(MatchCheck)
+   313586    0.566    0.000    2.472    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:293(_possible_names)
+526276/488804    2.090    0.000    2.373    0.000 {built-in method numpy.core._multiarray_umath.implement_array_function}
+   156795    1.917    0.000    2.370    0.000 {built-in method io.open}
+   156793    0.157    0.000    2.366    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:246(__init__)
+   313586    0.974    0.000    2.276    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:417(_sanitize_relative_path)
+   156793    0.329    0.000    2.209    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:372(abspath)
+   470379    0.463    0.000    2.187    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:263(_iszip)
+  1097551    1.149    0.000    2.012    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:963(split_line)
+    65087    1.161    0.000    1.976    0.000 {built-in method builtins.sorted}
+   116158    0.730    0.000    1.719    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:82(Progression)
+   470379    1.056    0.000    1.588    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:334(normpath)
+   156793    1.334    0.000    1.574    0.000 {built-in method builtins.next}
+   136287    1.473    0.000    1.473    0.000 {method 'pop' of 'list' objects}
+   313586    0.193    0.000    1.470    0.000 <__array_function__ internals>:2(dot)
+   470379    0.375    0.000    1.191    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:117(splitext)
+   627173    0.666    0.000    1.157    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/urllib/parse.py:417(urlsplit)
+   174173    1.072    0.000    1.072    0.000 {method 'uniform' of 'numpy.random.mtrand.RandomState' objects}
+  1882538    1.055    0.000    1.055    0.000 {method 'astype' of 'numpy.generic' objects}
+   940758    0.367    0.000    1.022    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:999(<listcomp>)
+   313586    0.656    0.000    0.965    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:71(join)
+  1097551    0.625    0.000    0.922    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_internal.py:908(__call__)
+    17829    0.013    0.000    0.916    0.000 <__array_function__ internals>:2(vstack)
+    17829    0.028    0.000    0.868    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/shape_base.py:222(vstack)
+  9249396    0.815    0.000    0.815    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/allocate.py:154(<lambda>)
+   156793    0.083    0.000    0.804    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:431(exists)
+   783965    0.589    0.000    0.794    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:130(keys)
+ 12891463    0.791    0.000    0.791    0.000 {method 'append' of 'list' objects}
+    17919    0.014    0.000    0.727    0.000 <__array_function__ internals>:2(concatenate)
+   156793    0.124    0.000    0.721    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/genericpath.py:16(exists)
+   156793    0.068    0.000    0.719    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:280(_splitzipext)
+   470379    0.506    0.000    0.711    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/genericpath.py:121(_splitext)
+  1254346    0.590    0.000    0.692    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/urllib/parse.py:110(_coerce_args)
+   398028    0.665    0.000    0.665    0.000 {built-in method builtins.min}
+3469070/3469058    0.526    0.000    0.658    0.000 {built-in method builtins.isinstance}
+   940758    0.540    0.000    0.655    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:732(floatconv)
+   470380    0.251    0.000    0.602    0.000 {method 'join' of 'str' objects}
+   156793    0.597    0.000    0.597    0.000 {built-in method posix.stat}
+   470382    0.368    0.000    0.541    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/codecs.py:319(decode)
+   156794    0.511    0.000    0.511    0.000 {method 'close' of '_io.TextIOWrapper' objects}
+        5    0.022    0.004    0.480    0.096 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:362(Year)
+   156793    0.122    0.000    0.383    0.000 <__array_function__ internals>:2(squeeze)
+   156825    0.370    0.000    0.370    0.000 {built-in method numpy.array}
+   156793    0.271    0.000    0.365    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:729(_getconv)
+   313586    0.142    0.000    0.350    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:1024(<genexpr>)
+  1097551    0.341    0.000    0.341    0.000 {method 'split' of 're.Pattern' objects}
+  1567943    0.338    0.000    0.338    0.000 {method 'split' of 'str' objects}
+   156794    0.135    0.000    0.319    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/_bootlocale.py:33(getpreferredencoding)
+   156793    0.069    0.000    0.317    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/re.py:250(compile)
+   783965    0.252    0.000    0.315    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:131(splitdrive)
+  3135860    0.293    0.000    0.293    0.000 {method 'lstrip' of 'str' objects}
+3467526/3467480    0.266    0.000    0.266    0.000 {built-in method builtins.len}
+   156793    0.125    0.000    0.258    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:60(isabs)
+   156793    0.154    0.000    0.248    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/re.py:289(_compile)
+   156793    0.245    0.000    0.245    0.000 {built-in method posix.getcwd}
+  1254344    0.237    0.000    0.237    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_iotools.py:11(_decode_line)
+  1097554    0.226    0.000    0.226    0.000 {method 'startswith' of 'str' objects}
+  2351898    0.215    0.000    0.215    0.000 {built-in method posix.fspath}
+   156793    0.097    0.000    0.208    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/re.py:270(escape)
+   940758    0.204    0.000    0.204    0.000 {method 'rfind' of 'str' objects}
+   156794    0.184    0.000    0.184    0.000 {built-in method _locale.nl_langinfo}
+   470382    0.173    0.000    0.173    0.000 {built-in method _codecs.utf_8_decode}
+   470379    0.115    0.000    0.172    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:41(_get_sep)
+   627190    0.161    0.000    0.161    0.000 {built-in method __new__ of type object at 0x562c3f7e1ac0}
+  1097551    0.156    0.000    0.156    0.000 {method 'strip' of 'str' objects}
+   156793    0.133    0.000    0.155    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:916(flatten_dtype_internal)
+   629512    0.154    0.000    0.154    0.000 {method 'get' of 'dict' objects}
+    10826    0.084    0.000    0.143    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:8(Arrival)
+   940758    0.142    0.000    0.142    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:946(pack_items)
+   940758    0.134    0.000    0.134    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:103(_load)
+   156794    0.097    0.000    0.134    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/codecs.py:309(__init__)
+   156821    0.050    0.000    0.133    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/abc.py:96(__instancecheck__)
+  1254346    0.124    0.000    0.124    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/urllib/parse.py:99(_noop)
+   156793    0.087    0.000    0.123    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:1022(<listcomp>)
+   940767    0.115    0.000    0.115    0.000 {method 'lower' of 'str' objects}
+   156793    0.079    0.000    0.115    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1441(squeeze)
+    17829    0.011    0.000    0.112    0.000 <__array_function__ internals>:2(atleast_2d)
+   156793    0.096    0.000    0.096    0.000 {method 'translate' of 'str' objects}
+   943782    0.094    0.000    0.094    0.000 {built-in method builtins.issubclass}
+   156793    0.063    0.000    0.093    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:256(__del__)
+   470388    0.091    0.000    0.091    0.000 {method 'endswith' of 'str' objects}
+   156793    0.070    0.000    0.089    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_datasource.py:149(__getitem__)
+   783966    0.089    0.000    0.089    0.000 {method 'keys' of 'dict' objects}
+    17829    0.045    0.000    0.088    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/shape_base.py:81(atleast_2d)
+   156821    0.083    0.000    0.083    0.000 {built-in method _abc._abc_instancecheck}
+   313586    0.074    0.000    0.074    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_internal.py:906(__init__)
+   156793    0.055    0.000    0.055    0.000 {built-in method builtins.iter}
+   156793    0.051    0.000    0.051    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:1140(<listcomp>)
+   313586    0.047    0.000    0.047    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/multiarray.py:736(dot)
+   156793    0.046    0.000    0.046    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/npyio.py:1116(<listcomp>)
+   156793    0.043    0.000    0.043    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/_iotools.py:38(_is_string_like)
+    38184    0.038    0.000    0.038    0.000 {built-in method numpy.asanyarray}
+   156794    0.037    0.000    0.037    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/codecs.py:260(__init__)
+   156808    0.036    0.000    0.036    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
+   175091    0.036    0.000    0.036    0.000 {built-in method builtins.hasattr}
+   136287    0.035    0.000    0.035    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/engine.py:15(__init__)
+   157447    0.027    0.000    0.027    0.000 {built-in method builtins.getattr}
+   156793    0.023    0.000    0.023    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1437(_squeeze_dispatcher)
+   156903    0.023    0.000    0.023    0.000 {method 'items' of 'dict' objects}
+    17829    0.008    0.000    0.020    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/shape_base.py:218(_vhstack_dispatcher)
+      416    0.000    0.000    0.018    0.000 <__array_function__ internals>:2(nanmedian)
+      416    0.001    0.000    0.018    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1028(nanmedian)
+        1    0.017    0.017    0.017    0.017 simulate.py:155(<listcomp>)
+  832/416    0.001    0.000    0.016    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/function_base.py:3513(_ureduce)
+      416    0.000    0.000    0.016    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:977(_nanmedian)
+      416    0.000    0.000    0.015    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:960(_nanmedian1d)
+      416    0.000    0.000    0.013    0.000 <__array_function__ internals>:2(median)
+      416    0.000    0.000    0.012    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/function_base.py:3573(median)
+    17829    0.006    0.000    0.012    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/shape_base.py:207(_arrays_for_stack_dispatcher)
+      416    0.002    0.000    0.011    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/function_base.py:3663(_median)
+      416    0.000    0.000    0.005    0.000 <__array_function__ internals>:2(mean)
+      416    0.001    0.000    0.005    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3322(mean)
      9298    0.004    0.000    0.004    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/entity.py:31(__init__)
-      370    0.001    0.000    0.003    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_methods.py:162(_mean)
-        1    0.000    0.000    0.003    0.003 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:814(read_csv)
-        1    0.000    0.000    0.003    0.003 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:540(_read)
-      370    0.000    0.000    0.003    0.000 <__array_function__ internals>:2(partition)
-    14899    0.003    0.000    0.003    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/multiarray.py:148(concatenate)
+      416    0.001    0.000    0.004    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_methods.py:162(_mean)
+        1    0.000    0.000    0.004    0.004 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:814(read_csv)
+        1    0.000    0.000    0.004    0.004 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:540(_read)
+    10826    0.003    0.000    0.003    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/entity.py:18(__init__)
+    17919    0.003    0.000    0.003    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/multiarray.py:148(concatenate)
         1    0.000    0.000    0.003    0.003 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1688(read)
-       15    0.000    0.000    0.002    0.000 <__array_function__ internals>:2(nanstd)
-       15    0.000    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1575(nanstd)
-      370    0.000    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:667(partition)
-    14809    0.002    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/shape_base.py:77(_atleast_2d_dispatcher)
-     7687    0.002    0.000    0.002    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/entity.py:18(__init__)
-       15    0.000    0.000    0.002    0.000 <__array_function__ internals>:2(nanvar)
-       15    0.000    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1427(nanvar)
-      370    0.001    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:142(_remove_nan_1d)
-    717/8    0.001    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/copy.py:128(deepcopy)
+      416    0.000    0.000    0.002    0.000 <__array_function__ internals>:2(partition)
+    17829    0.002    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/shape_base.py:77(_atleast_2d_dispatcher)
+      416    0.001    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:142(_remove_nan_1d)
     24/22    0.000    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:368(__init__)
+       15    0.000    0.000    0.002    0.000 <__array_function__ internals>:2(nanstd)
+      416    0.000    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:667(partition)
+       15    0.000    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1575(nanstd)
+    717/8    0.001    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/copy.py:128(deepcopy)
+       15    0.000    0.000    0.002    0.000 <__array_function__ internals>:2(nanvar)
+      832    0.001    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/numerictypes.py:358(issubdtype)
+       15    0.000    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1427(nanvar)
+      527    0.002    0.000    0.002    0.000 {method 'reduce' of 'numpy.ufunc' objects}
     710/1    0.000    0.000    0.002    0.002 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/copy.py:200(_deepcopy_list)
-      740    0.001    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/numerictypes.py:358(issubdtype)
-       15    0.000    0.000    0.002    0.000 <__array_function__ internals>:2(nanmean)
-      481    0.002    0.000    0.002    0.000 {method 'reduce' of 'numpy.ufunc' objects}
-       15    0.000    0.000    0.002    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:862(nanmean)
-        1    0.000    0.000    0.001    0.001 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/frame.py:641(__init__)
-        1    0.000    0.000    0.001    0.001 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/construction.py:411(dict_to_mgr)
-      370    0.001    0.000    0.001    0.000 {method 'partition' of 'numpy.ndarray' objects}
+        1    0.000    0.000    0.002    0.002 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/frame.py:641(__init__)
+        1    0.000    0.000    0.002    0.002 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/construction.py:411(dict_to_mgr)
+      416    0.000    0.000    0.001    0.000 <__array_function__ internals>:2(nonzero)
         1    0.000    0.000    0.001    0.001 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:222(read)
         1    0.000    0.000    0.001    0.001 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:1052(_get_empty_meta)
+       15    0.000    0.000    0.001    0.000 <__array_function__ internals>:2(nanmean)
         1    0.000    0.000    0.001    0.001 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:1092(<dictcomp>)
-      370    0.000    0.000    0.001    0.000 <__array_function__ internals>:2(nonzero)
-      370    0.001    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_methods.py:66(_count_reduce_items)
-     1480    0.001    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/numerictypes.py:284(issubclass_)
+       15    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:862(nanmean)
+      416    0.001    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_methods.py:66(_count_reduce_items)
+      416    0.001    0.000    0.001    0.000 {method 'partition' of 'numpy.ndarray' objects}
+     1664    0.001    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/numerictypes.py:284(issubclass_)
        45    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:183(_divide_by_count)
+        1    0.000    0.000    0.001    0.001 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1362(__init__)
+        1    0.000    0.000    0.001    0.001 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1629(_make_engine)
        80    0.000    0.000    0.001    0.000 <__array_function__ internals>:2(sum)
-        4    0.000    0.000    0.001    0.000 {built-in method _warnings.warn}
+      416    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1829(nonzero)
        80    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:2123(sum)
-       95    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:69(_wrapreduction)
-      370    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1829(nonzero)
+      461    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:51(_wrapfunc)
         1    0.000    0.000    0.001    0.001 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/construction.py:97(arrays_to_mgr)
-        3    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:96(_showwarnmsg)
-        3    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:20(_showwarnmsg_impl)
+       95    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:69(_wrapreduction)
        11    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:4901(reindex)
-        3    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:117(_formatwarnmsg)
        15    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:494(sanitize_array)
-        3    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:35(_formatwarnmsg_impl)
        11    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:5106(reindex)
-      415    0.000    0.000    0.001    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:51(_wrapfunc)
         1    0.000    0.000    0.001    0.001 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/construction.py:574(_homogenize)
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/linecache.py:15(getline)
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/linecache.py:37(getlines)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1362(__init__)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/linecache.py:82(updatecache)
+        1    0.000    0.000    0.001    0.001 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:60(__init__)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:521(_init_dict)
        30    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:68(_replace_nan)
        92    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_ufunc_config.py:32(seterr)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1629(_make_engine)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:521(_init_dict)
-      717    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/copy.py:242(_keep_alive)
+      416    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
        11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:6342(copy)
-      370    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+      717    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/copy.py:242(_keep_alive)
        46    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_ufunc_config.py:429(__enter__)
-       51    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(copyto)
        20    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:7072(ensure_index)
+       51    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(copyto)
         3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:469(__new__)
         5    0.000    0.000    0.000    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:464(<listcomp>)
-       15    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(any)
-    75/64    0.000    0.000    0.000    0.000 {built-in method builtins.all}
-       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1873(from_array)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/tokenize.py:388(open)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:648(get_handle)
-        2    0.000    0.000    0.000    0.000 {method 'readlines' of '_io._IOBase' objects}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:60(__init__)
-       46    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_ufunc_config.py:434(__exit__)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:714(_try_cast)
-      370    0.000    0.000    0.000    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
-        9    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+    75/64    0.000    0.000    0.000    0.000 {built-in method builtins.all}
        24    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:5991(__setattr__)
-       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:453(_validate_dtype)
-       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:2385(new_block)
-     2152    0.000    0.000    0.000    0.000 {built-in method builtins.id}
-       30    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.generic' objects}
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1656(pandas_dtype)
-       45    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(transpose)
-       92    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_ufunc_config.py:131(geterr)
+       15    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(any)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:714(_try_cast)
+      416    0.000    0.000    0.000    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
+        9    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1873(from_array)
        14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/cast.py:1573(construct_1d_object_array_from_listlike)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/tokenize.py:295(detect_encoding)
-       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:2268(any)
+       46    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_ufunc_config.py:434(__exit__)
+       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:453(_validate_dtype)
+       45    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(transpose)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1656(pandas_dtype)
+       30    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.generic' objects}
+     2152    0.000    0.000    0.000    0.000 {built-in method builtins.id}
+       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:2385(new_block)
+       92    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_ufunc_config.py:131(geterr)
        22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:5348(<genexpr>)
-       31    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_methods.py:54(_any)
-       17    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:113(_copyto)
-      370    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
-        6    0.000    0.000    0.000    0.000 {pandas._libs.lib.maybe_convert_objects}
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:620(copy)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:11311(any)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/tokenize.py:319(read_or_stop)
+      416    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:2268(any)
        36    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:671(name)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:11311(any)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:11010(any)
-       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:5931(__finalize__)
-        2    0.000    0.000    0.000    0.000 {method 'readline' of '_io.BufferedReader' objects}
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:620(copy)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:285(_get_filepath_or_buffer)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:10967(_logical_func)
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/cast.py:123(maybe_convert_platform)
+        6    0.000    0.000    0.000    0.000 {pandas._libs.lib.maybe_convert_objects}
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:5401(identical)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:5540(isna)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:7878(isna)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:5401(identical)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:285(_get_filepath_or_buffer)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:260(__call__)
+       31    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_methods.py:54(_any)
+        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/cast.py:123(maybe_convert_platform)
+       45    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:601(transpose)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:4632(_reduce)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:306(apply)
+       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:5931(__finalize__)
+       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:113(_copyto)
        73    0.000    0.000    0.000    0.000 {built-in method numpy.zeros}
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:260(__call__)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:306(apply)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/missing.py:106(isna)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:2119(create_block_manager_from_column_arrays)
+      416    0.000    0.000    0.000    0.000 {built-in method numpy.core._multiarray_umath.normalize_axis_index}
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/missing.py:189(_isna)
        13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:134(_get_option)
-       45    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:601(transpose)
-      370    0.000    0.000    0.000    0.000 {built-in method numpy.core._multiarray_umath.normalize_axis_index}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:2191(_form_blocks)
-       25    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:265(__init__)
-      105    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/generic.py:42(_instancecheck)
        36    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1631(validate_all_hashable)
-      370    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3317(_mean_dispatcher)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:723(_set_axis)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/nanops.py:499(nanany)
-      370    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1023(_nanmedian_dispatcher)
-       16    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:396(extract_array)
-      370    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1825(_nonzero_dispatcher)
-       92    0.000    0.000    0.000    0.000 {built-in method numpy.seterrobj}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:473(EndRep)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:116(_get_single_key)
-      370    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/function_base.py:3568(_median_dispatcher)
-      370    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:663(_partition_dispatcher)
-        1    0.000    0.000    0.000    0.000 simulate.py:294(<listcomp>)
-       14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:158(is_object_dtype)
-        6    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/numeric.py:289(full)
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/cast.py:1171(maybe_infer_to_datetimelike)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:165(simplefilter)
+       25    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:265(__init__)
        37    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:621(name)
-       16    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:7167(maybe_extract_name)
-       14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/inference.py:267(is_dict_like)
+      105    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/generic.py:42(_instancecheck)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:2119(create_block_manager_from_column_arrays)
+      416    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3317(_mean_dispatcher)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/nanops.py:499(nanany)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/pstats.py:89(__init__)
-       95    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:70(<dictcomp>)
-      105    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/generic.py:37(_check)
-       21    0.000    0.000    0.000    0.000 {built-in method numpy.empty}
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/api.py:367(default_index)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:5314(equals)
-      184    0.000    0.000    0.000    0.000 {built-in method numpy.geterrobj}
-       10    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:869(__array__)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:723(_set_axis)
+      416    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1023(_nanmedian_dispatcher)
+      416    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1825(_nonzero_dispatcher)
+      416    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/function_base.py:3568(_median_dispatcher)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:2191(_form_blocks)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/pstats.py:99(init)
-       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:2401(check_ndim)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:223(set_axis)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:141(is_url)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:181(_add_filter)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/common.py:296(maybe_iterable_to_list)
+       16    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:396(extract_array)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:116(_get_single_key)
+      416    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:663(_partition_dispatcher)
+        1    0.000    0.000    0.000    0.000 simulate.py:304(<listcomp>)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/LivSim-LTX/LivSim_Processing/event.py:473(EndRep)
+        6    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/numeric.py:289(full)
        72    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1650(<genexpr>)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:108(__init__)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/nanops.py:264(_get_values)
-       44    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:5975(__getattr__)
-       25    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:718(_values)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1469(_clean_options)
+       92    0.000    0.000    0.000    0.000 {built-in method numpy.seterrobj}
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:165(simplefilter)
+       16    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:7167(maybe_extract_name)
+       46    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_ufunc_config.py:425(__init__)
        63    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/inference.py:328(is_hashable)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:2249(_stack_arrays)
+       10    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:869(__array__)
+       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:2401(check_ndim)
+       14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/inference.py:267(is_dict_like)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/api.py:367(default_index)
+       95    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:70(<dictcomp>)
+       21    0.000    0.000    0.000    0.000 {built-in method numpy.empty}
+        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/cast.py:1171(maybe_infer_to_datetimelike)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:141(is_url)
+      105    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/generic.py:37(_check)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:5314(equals)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:108(__init__)
+       14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:158(is_object_dtype)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1469(_clean_options)
+       44    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:5975(__getattr__)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/common.py:296(maybe_iterable_to_list)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:1151(_is_binary_mode)
+      184    0.000    0.000    0.000    0.000 {built-in method numpy.geterrobj}
+       25    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:718(_values)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:223(set_axis)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:181(_add_filter)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/nanops.py:264(_get_values)
        11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/range.py:166(_simple_new)
        12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:2305(maybe_coerce_values)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/base.py:58(_validate_set_axis)
-        3    0.000    0.000    0.000    0.000 {method 'write' of '_io.TextIOWrapper' objects}
-       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1494(_is_dtype_type)
+       22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:5414(<genexpr>)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1738(__exit__)
-       46    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_ufunc_config.py:425(__init__)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:2334(get_block_type)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:229(stringify_path)
-       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:644(_sanitize_ndim)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/base.py:58(_validate_set_axis)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1409(close)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:178(_validate_parse_dates_presence)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:596(_get_root)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:1151(_is_binary_mode)
-       46    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:458(__enter__)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1860(from_blocks)
-       10    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:752(_references)
+       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1494(_is_dtype_type)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:2334(get_block_type)
        25    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:2011(internal_values)
+       46    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:644(_sanitize_ndim)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:178(_validate_parse_dates_presence)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/pstats.py:118(load_stats)
        11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:534(copy)
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:403(__init__)
-       41    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/inference.py:294(<genexpr>)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:596(_get_root)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:229(stringify_path)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:458(__enter__)
         7    0.000    0.000    0.000    0.000 {method '__deepcopy__' of 'numpy.ndarray' objects}
-        1    0.000    0.000    0.000    0.000 {built-in method builtins.locals}
-       22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:5414(<genexpr>)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/missing.py:455(array_equivalent)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1860(from_blocks)
+        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:640(_simple_new)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/missing.py:266(_isna_array)
+        3    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(size)
+       41    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/inference.py:294(<genexpr>)
+       10    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:752(_references)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1414(_get_options_with_defaults)
         1    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.ndarray' objects}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/missing.py:455(array_equivalent)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/frame.py:1776(to_numpy)
+       25    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/flags.py:49(__init__)
        11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:2465(extend_blocks)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:534(infer_compression)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_asarray.py:22(require)
-       25    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/flags.py:49(__init__)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/missing.py:266(_isna_array)
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:640(_simple_new)
-        3    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(size)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:649(_warn_if_deprecated)
-       26    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:610(_get_deprecated_option)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:523(_get_axis)
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:169(_expand_user)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/frame.py:1776(to_numpy)
-       44    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_list_like}
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/base.py:494(find)
-       80    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:2118(_sum_dispatcher)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:117(close)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:201(_set_noconvert_columns)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/missing.py:307(_isna_string_dtype)
-        3    0.000    0.000    0.000    0.000 {built-in method now}
-       31    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/range.py:892(__len__)
-       23    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1847(__init__)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:477(__exit__)
-       19    0.000    0.000    0.000    0.000 {built-in method numpy.asarray}
-       10    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:2175(_grouping_func)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1677(as_array)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:637(_translate_key)
-       11    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
-       51    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/multiarray.py:1071(copyto)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/tokenize.py:325(find_cookie)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:1190(is_potential_multi_index)
-       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:458(ensure_wrapped_if_datetimelike)
-       22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1322(is_1d_only_ea_dtype)
-        1    0.000    0.000    0.000    0.000 {method 'read_low_memory' of 'pandas._libs.parsers.TextReader' objects}
-       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:683(_sanitize_str_dtypes)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:649(_warn_if_deprecated)
+        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:169(_expand_user)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:499(get_compression_method)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:523(_get_axis)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:117(close)
+       19    0.000    0.000    0.000    0.000 {built-in method numpy.asarray}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1677(as_array)
+       26    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:610(_get_deprecated_option)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/missing.py:553(_array_equivalent_object)
-        2    0.000    0.000    0.000    0.000 <string>:1(__new__)
-        1    0.000    0.000    0.000    0.000 {built-in method pandas._libs.missing.isnaobj}
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:228(expanduser)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:437(__init__)
+       44    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_list_like}
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1881(_refine_defaults_read)
-       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/flags.py:85(allows_duplicate_labels)
-       20    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/range.py:308(dtype)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:783(__len__)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/missing.py:949(clean_reindex_fill_method)
-       45    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:597(_transpose_dispatcher)
-       63    0.000    0.000    0.000    0.000 {built-in method builtins.hash}
-        5    0.000    0.000    0.000    0.000 {method 'match' of 're.Pattern' objects}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1823(_consolidate_inplace)
-       14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:636(_sanitize_non_ordered)
+        1    0.000    0.000    0.000    0.000 {method 'read_low_memory' of 'pandas._libs.parsers.TextReader' objects}
+       80    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:2118(_sum_dispatcher)
+       31    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/range.py:892(__len__)
+        3    0.000    0.000    0.000    0.000 {built-in method now}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:2249(_stack_arrays)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:477(__exit__)
+       10    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:2175(_grouping_func)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/base.py:494(find)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:1190(is_potential_multi_index)
+        1    0.000    0.000    0.000    0.000 {built-in method pandas._libs.missing.isnaobj}
+       23    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1847(__init__)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/typing.py:768(__instancecheck__)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:783(__len__)
+       11    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/posixpath.py:228(expanduser)
+       51    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/multiarray.py:1071(copyto)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/warnings.py:437(__init__)
+       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:458(ensure_wrapped_if_datetimelike)
+       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:683(_sanitize_str_dtypes)
+        2    0.000    0.000    0.000    0.000 <string>:1(__new__)
+       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/flags.py:85(allows_duplicate_labels)
+       63    0.000    0.000    0.000    0.000 {built-in method builtins.hash}
+       20    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/range.py:308(dtype)
+       22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1322(is_1d_only_ea_dtype)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:637(_translate_key)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/missing.py:949(clean_reindex_fill_method)
+        1    0.000    0.000    0.000    0.000 {pandas._libs.lib.array_equivalent_object}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:653(is_integer_dtype)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:595(_set_noconvert_dtype_columns)
+       14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:636(_sanitize_non_ordered)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/typing.py:771(__subclasscheck__)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/cProfile.py:50(create_stats)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1458(_check_file_or_buffer)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:578(_select_options)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:194(close)
+       45    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:597(_transpose_dispatcher)
         2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1244(is_bool_dtype)
        15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/construction.py:703(_maybe_repeat)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:1219(dedup_names)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:653(is_integer_dtype)
-       22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/__init__.py:33(using_copy_on_write)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/nanops.py:220(_maybe_get_mask)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1805(is_consolidated)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/base.py:767(__iter__)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/config.py:578(_select_options)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.locals}
        14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:809(_reset_identity)
-       10    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/range.py:485(equals)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:188(validate_header_arg)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:194(close)
-       14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:144(<lambda>)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/base.py:767(__iter__)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:273(is_fsspec_url)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/codecs.py:186(__init__)
-       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:875(__len__)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/typing.py:771(__subclasscheck__)
-        1    0.000    0.000    0.000    0.000 {pandas._libs.lib.array_equivalent_object}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:595(_set_noconvert_dtype_columns)
-       22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1944(_block)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/cProfile.py:50(create_stats)
-        6    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1389(is_ea_or_datetimelike_dtype)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:342(_maybe_make_multi_index_columns)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/typing.py:868(__new__)
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:565(_ensure_array)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1458(_check_file_or_buffer)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_asarray.py:111(<setcomp>)
-       33    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/typing.py:1149(cast)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/base.py:46(__len__)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/common.py:571(require_length_match)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/inference.py:99(is_file_like)
-        1    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(shape)
-       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:509(_get_axis_number)
-       22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:1582(name)
-       14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:142(classes)
-       33    0.000    0.000    0.000    0.000 {built-in method _warnings._filters_mutated}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:188(validate_header_arg)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:1219(dedup_names)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/nanops.py:220(_maybe_get_mask)
+       22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/_config/__init__.py:33(using_copy_on_write)
+       10    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/range.py:485(equals)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1823(_consolidate_inplace)
+       14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:144(<lambda>)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:1365(_validate_parse_dates_arg)
-       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1570(_nanstd_dispatcher)
-       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:858(_nanmean_dispatcher)
-       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:338(attrs)
-       11    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
-       24    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:359(flags)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/common.py:571(require_length_match)
+       22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1944(_block)
+       13    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:875(__len__)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/inference.py:99(is_file_like)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1805(is_consolidated)
+        1    0.000    0.000    0.000    0.000 <__array_function__ internals>:2(shape)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/codecs.py:186(__init__)
+        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:565(_ensure_array)
+       33    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/typing.py:1149(cast)
         3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3169(size)
-       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1422(_nanvar_dispatcher)
-        1    0.000    0.000    0.000    0.000 {method 'close' of 'pandas._libs.parsers.TextReader' objects}
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/base.py:46(__len__)
+       33    0.000    0.000    0.000    0.000 {built-in method _warnings._filters_mutated}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:342(_maybe_make_multi_index_columns)
+       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:509(_get_axis_number)
+        6    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1389(is_ea_or_datetimelike_dtype)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/copy.py:66(copy)
+       22    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:1582(name)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/_asarray.py:111(<setcomp>)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/construction.py:476(<listcomp>)
+        1    0.000    0.000    0.000    0.000 {method 'close' of 'pandas._libs.parsers.TextReader' objects}
+       14    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:142(classes)
+       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:338(attrs)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/types.py:171(__get__)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/abc.py:100(__subclasscheck__)
+        2    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_all_arraylike}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:1099(_make_date_converter)
+       24    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/generic.py:359(flags)
         3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:583(_dtype_to_subclass)
        15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:2263(_any_dispatcher)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/types.py:171(__get__)
-       24    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:1323(_clear_item_cache)
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1077(needs_i8_conversion)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/missing.py:121(clean_fill_method)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/nanops.py:353(_na_ok_dtype)
-        1    0.000    0.000    0.000    0.000 {built-in method _codecs.lookup}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/copy.py:66(copy)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/abc.py:100(__subclasscheck__)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:258(<dictcomp>)
-        3    0.000    0.000    0.000    0.000 {method 'copy' of 'dict' objects}
-        2    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_all_arraylike}
-        4    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:1215(<genexpr>)
-       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/flags.py:53(allows_duplicate_labels)
-        6    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_scalar}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:1099(_make_date_converter)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:333(<dictcomp>)
-        1    0.000    0.000    0.000    0.000 <string>:2(__init__)
-       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:574(_constructor)
-        3    0.000    0.000    0.000    0.000 {method 'add_index_reference' of 'pandas._libs.internals.BlockValuesRefs' objects}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:405(ensure_dtype_objs)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1813(_consolidate_check)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1806(_clean_na_values)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1435(_is_dtype)
-       14    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:1103(_maybe_memory_map)
-       10    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:1064(<lambda>)
-        2    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_integer}
-        2    0.000    0.000    0.000    0.000 {method 'startswith' of 'bytes' objects}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1335(is_extension_array_dtype)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:212(<dictcomp>)
-       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1838(ndim)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:271(_extract_multi_indexer_columns)
-        1    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1459(get_dtype)
-        2    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
-       12    0.000    0.000    0.000    0.000 {built-in method builtins.callable}
-        2    0.000    0.000    0.000    0.000 {method 'seek' of '_io.BufferedReader' objects}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:2109(get_values)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/util/_validators.py:224(validate_bool_kwarg)
-        3    0.000    0.000    0.000    0.000 {method 'time' of 'datetime.datetime' objects}
-        1    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
-        2    0.000    0.000    0.000    0.000 {method 'decode' of 'bytes' objects}
-        1    0.000    0.000    0.000    0.000 {built-in method _codecs.lookup_error}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:778(is_)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:213(<listcomp>)
-        1    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/construction.py:197(mgr_to_mgr)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:242(_has_complex_date_col)
         1    0.000    0.000    0.000    0.000 {built-in method sys.getfilesystemencoding}
+       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1570(_nanstd_dispatcher)
+       24    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:1323(_clear_item_cache)
+        1    0.000    0.000    0.000    0.000 <string>:2(__init__)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/missing.py:121(clean_fill_method)
+        1    0.000    0.000    0.000    0.000 {method 'match' of 're.Pattern' objects}
+       11    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
+        6    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_scalar}
+       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:1422(_nanvar_dispatcher)
+        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1077(needs_i8_conversion)
+        1    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
+       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/series.py:574(_constructor)
+        3    0.000    0.000    0.000    0.000 {method 'copy' of 'dict' objects}
+       15    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/lib/nanfunctions.py:858(_nanmean_dispatcher)
+        4    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:1215(<genexpr>)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1806(_clean_na_values)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:258(<dictcomp>)
+        3    0.000    0.000    0.000    0.000 {method 'add_index_reference' of 'pandas._libs.internals.BlockValuesRefs' objects}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/common.py:1103(_maybe_memory_map)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:405(ensure_dtype_objs)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:271(_extract_multi_indexer_columns)
+       12    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/flags.py:53(allows_duplicate_labels)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1813(_consolidate_check)
+        1    0.000    0.000    0.000    0.000 {built-in method _codecs.lookup}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/nanops.py:353(_na_ok_dtype)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:333(<dictcomp>)
+       14    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1435(_is_dtype)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/util/_validators.py:224(validate_bool_kwarg)
+       10    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:1064(<lambda>)
+       12    0.000    0.000    0.000    0.000 {built-in method builtins.callable}
+        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1459(get_dtype)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/blocks.py:2109(get_values)
+        3    0.000    0.000    0.000    0.000 {method 'time' of 'datetime.datetime' objects}
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/urllib/parse.py:399(_checknetloc)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:212(<dictcomp>)
+        1    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:1335(is_extension_array_dtype)
+       11    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:1838(ndim)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py:213(<listcomp>)
+        2    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:242(_has_complex_date_col)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:778(is_)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/construction.py:197(mgr_to_mgr)
+        1    0.000    0.000    0.000    0.000 {built-in method _codecs.lookup_error}
+        2    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_integer}
+        2    0.000    0.000    0.000    0.000 {pandas._libs.algos.ensure_object}
         2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:530(<genexpr>)
+        1    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/codecs.py:331(getstate)
+        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3165(_size_dispatcher)
         3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:4937(_values)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:2109(_validate_skipfooter)
-        4    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_iterator}
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3165(_size_dispatcher)
-        3    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/codecs.py:331(getstate)
-        2    0.000    0.000    0.000    0.000 {pandas._libs.algos.ensure_object}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:228(is_single_block)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:152(<lambda>)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:498(is_string_or_object_np_dtype)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/urllib/parse.py:399(_checknetloc)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:486(validate_integer)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:222(<setcomp>)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:931(dtype)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:1387(is_index_col)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1928(shape)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:705(<lambda>)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:2011(_extract_dialect)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:233(items)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/util/_validators.py:445(check_dtype_backend)
-        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/base.py:326(ndim)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/enum.py:664(value)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:147(classes_and_not_datetimelike)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:966(_validate_usecols_arg)
+        4    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_iterator}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:2011(_extract_dialect)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:228(is_single_block)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1928(shape)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:486(validate_integer)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:1387(is_index_col)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:233(items)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:498(is_string_or_object_np_dtype)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/compat/numpy/function.py:60(__call__)
-        1    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:982(__init__)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/indexes/base.py:931(dtype)
         2    0.000    0.000    0.000    0.000 {pandas._libs.lib.is_bool}
-        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/nanops.py:198(_get_fill_value)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/copy.py:107(_copy_immutable)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/enum.py:664(value)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/internals/managers.py:982(__init__)
+        2    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/base.py:326(ndim)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:222(<setcomp>)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:147(classes_and_not_datetimelike)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:705(<lambda>)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/dtypes/common.py:152(<lambda>)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:966(_validate_usecols_arg)
+        1    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:516(_validate_names)
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:234(<listcomp>)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/core/nanops.py:198(_get_fill_value)
         1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/numpy/core/fromnumeric.py:1924(_shape_dispatcher)
+        1    0.000    0.000    0.000    0.000 {method 'values' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1735(__enter__)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/base_parser.py:234(<listcomp>)
+        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/copy.py:107(_copy_immutable)
         1    0.000    0.000    0.000    0.000 {method 'reverse' of 'list' objects}
         1    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
-        1    0.000    0.000    0.000    0.000 /voyager/projects/xgao/.conda/envs/graft/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1735(__enter__)
-        1    0.000    0.000    0.000    0.000 {method 'values' of 'dict' objects}
 
 
