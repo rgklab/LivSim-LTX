@@ -38,7 +38,7 @@ def load_sas(verbose=0):
     Load static data files and enforce inclusion/exclusion criteria
     and load dynamic data which contains the risks estimated from different models.
     Requirements:
-        stathist_liin_with_risk_score.pkl is located in LivSim_Input/preprocessed/.
+        SRTR_2023_simulator_stathist_liin.pkl is located in LivSim_Input/preprocessed/.
         (This is a version of the stathist_liin data table that includes risk scores
         from each of the models for evaluation).
     """
@@ -47,10 +47,10 @@ def load_sas(verbose=0):
     vprint("CAND_LIIN loaded successfully!", verbose)
 
     vprint("Loading STATHIST_LIIN from pickle file...", verbose)
-    stathist_liin = pd.read_pickle(f'{INPUT_DIRECTORY}/stathist_liin_with_risk_score.pkl')
+    stathist_liin = pd.read_pickle(f'{INPUT_DIRECTORY}/SRTR_2023_simulator_stathist_liin.pkl')
     vprint("STATHIST_LIIN loaded successfully!", verbose)
 
-    stathist_liin = stathist_liin.drop('PERS_ID', axis=1)
+    # stathist_liin = stathist_liin.drop('PERS_ID', axis=1)
 
     vprint("Loading cohort files...", verbose)
     cohort = set()
@@ -134,7 +134,7 @@ def load_sas(verbose=0):
     vprint("Saving CAND_LIIN, STATHIST_LIIN to CSV...", verbose)
         
     cand_liin.to_csv(f'{INPUT_DIRECTORY}/cand_liin.csv', index=False)
-    stathist_liin.to_csv(f'{INPUT_DIRECTORY}/stathist_liin_with_risk_score.csv')
+    stathist_liin.to_csv(f'{INPUT_DIRECTORY}/SRTR_2023_simulator_stathist_liin.csv')
 
     vprint("CAND_LIIN, STATHIST_LIIN saved successfully!", verbose)
 
@@ -147,7 +147,7 @@ def load_sample_csv(folder='./experiment'):
     static_file = pd.read_csv(f'{folder}/cand_liin.csv',
                                 parse_dates=['CAN_ACTIVATE_DT', 'CAN_LAST_ACT_STAT_DT', 'CAN_REM_DT', 'CAN_DEATH_DT',
                                             'REC_TX_DT'])
-    dynamic_file = pd.read_csv(f'{folder}/stathist_liin_with_risk_score.csv', parse_dates=['CANHX_BEGIN_DT', 'CANHX_END_DT'])
+    dynamic_file = pd.read_csv(f'{folder}/SRTR_2023_simulator_stathist_liin.csv', parse_dates=['CANHX_BEGIN_DT', 'CANHX_END_DT'])
 
     return static_file, dynamic_file
 
@@ -307,38 +307,6 @@ def create_status(dynamic_file, static_file, available_patient):
     status_df.to_csv(f'./{OUTPUT_DIRECTORY}/SRTR_Status.csv', index=False)
 
 
-def foo():
-    static_file, dynamic_file = load_sample_csv(True)
-    # static_active_dt = static_file[['Patient ID', 'CAN_INIT_ACT_STAT_DT', 'CAN_ACTIVATE_DT']]
-    # static_active_dt['match'] = static_active_dt['CAN_INIT_ACT_STAT_DT'] == static_active_dt['CAN_ACTIVATE_DT']
-    # static_active_dt[static_active_dt['match'] == False].to_csv('./experiment/SRTR_active_dt_small.csv', index=False)
-    static_patient = static_file[static_file['PX_ID'] == 1065236][['PX_ID', 'CAN_ACTIVATE_DT']]
-    dynamic_patient = dynamic_file[dynamic_file['PX_ID'] == 1065236]
-    create_column_summary(dynamic_file['CANHX_STAT_CD'], 'CANHX_STAT_CD')
-    # status = pd.read_csv('./experiment/SRTR_Status.csv')
-    # status_inital = status[status['Status Event Time'] == 0]['Patient ID']
-    #
-    #
-    # patient_df = static_file['PX_ID']
-    # result = set(patient_df) - set(status_inital)
-    # remain = dynamic_file[dynamic_file['PX_ID'] == 312165]
-    # remain = remain.sort_values(by='CANHX_BEGIN_DT')
-    # remain.to_csv('remain.csv', index=False)
-    # tx_li = pd.read_csv('./experiment/tx_li.csv', parse_dates=['REC_TXFER_DT','REC_TX_DT'])
-    #
-    # organ_ctr = tx_li['DON_OPO_CTR_ID']
-    # organ_ctr_out = organ_ctr[organ_ctr > 708]
-    # organ_ctr_in = organ_ctr[organ_ctr <= 708]
-    static_file, a = load_sample_csv(True)
-    static_file_ctr = static_file['CAN_LISTING_CTR_ID']
-    static_file_ctr_in = static_file_ctr[static_file_ctr <= 708]
-    static_file_ctr_out = static_file_ctr[static_file_ctr > 708]
-    # plt.hist(transfer_diff, density=True, bins=30)  # density=False would make counts
-    # plt.ylabel('Probability')
-    # plt.xlabel('Transfer Diff')
-    # plt.show()
-    a = 5
-
 def post_process():
     """do post process analysis after LivSim run"""
     static_file_removal, dynamic_file_removal = load_sample_csv(True, folder=INPUT_DIRECTORY)
@@ -382,28 +350,29 @@ def create_geography_parnter():
     pass
 
 
-def preprocess_files(static_file, dynamic_file):
-    """remove HCC diagnosis and status 1 patient"""
-    # Get rid of all Patient with HCC diagnosis and all Patient that dead before the simulator start
-    static_file_hcc = static_file[static_file['CAN_DGN'].eq(4401) | static_file['CAN_DGN2'].eq(4401)]
-    static_file_remove_WL = static_file[static_file['CAN_REM_DT'] <= SIMULATOR_START_TIME]
-    # Get rid of all Patient with status1 in initial Status and dynamic status
-    # static info
-    static_file_status1 = static_file[
-        static_file['CAN_INIT_STAT'].eq(6011) | static_file['CAN_INIT_STAT'].eq(6010) | static_file['CAN_INIT_STAT'].eq(
-            6012)]
-    # dynamic info
-    dynamic_file_status1 = dynamic_file[
-        dynamic_file['CANHX_STAT_CD'].eq(6010) | dynamic_file['CANHX_STAT_CD'].eq(6011) | dynamic_file[
-            'CANHX_STAT_CD'].eq(6012) | dynamic_file['CANHX_STAT_CD'].eq(3010)]
-    patient_removal = pd.concat([static_file_hcc['PX_ID'], static_file_remove_WL['PX_ID'], static_file_status1['PX_ID'],
-                                 dynamic_file_status1['PX_ID']], ignore_index=True)
-    static_file_removal = static_file[~static_file['PX_ID'].isin(patient_removal)]
-    dynamic_file_removal = dynamic_file[~dynamic_file['PX_ID'].isin(patient_removal)]
-    dynamic_file_removal.to_csv(f'./{INPUT_DIRECTORY}/stathist_liin_with_risk_score_removal.csv', index=False)
-    static_file_removal.to_csv(f'./{INPUT_DIRECTORY}/cand_linn_removal.csv', index=False)
+# abondoned used ids for inclusion/exclusion criteria
+# def preprocess_files(static_file, dynamic_file):
+#     """remove HCC diagnosis and status 1 patient"""
+#     # Get rid of all Patient with HCC diagnosis and all Patient that dead before the simulator start
+#     static_file_hcc = static_file[static_file['CAN_DGN'].eq(4401) | static_file['CAN_DGN2'].eq(4401)]
+#     static_file_remove_WL = static_file[static_file['CAN_REM_DT'] <= SIMULATOR_START_TIME]
+#     # Get rid of all Patient with status1 in initial Status and dynamic status
+#     # static info
+#     static_file_status1 = static_file[
+#         static_file['CAN_INIT_STAT'].eq(6011) | static_file['CAN_INIT_STAT'].eq(6010) | static_file['CAN_INIT_STAT'].eq(
+#             6012)]
+#     # dynamic info
+#     dynamic_file_status1 = dynamic_file[
+#         dynamic_file['CANHX_STAT_CD'].eq(6010) | dynamic_file['CANHX_STAT_CD'].eq(6011) | dynamic_file[
+#             'CANHX_STAT_CD'].eq(6012) | dynamic_file['CANHX_STAT_CD'].eq(3010)]
+#     patient_removal = pd.concat([static_file_hcc['PX_ID'], static_file_remove_WL['PX_ID'], static_file_status1['PX_ID'],
+#                                  dynamic_file_status1['PX_ID']], ignore_index=True)
+#     static_file_removal = static_file[~static_file['PX_ID'].isin(patient_removal)]
+#     dynamic_file_removal = dynamic_file[~dynamic_file['PX_ID'].isin(patient_removal)]
+#     dynamic_file_removal.to_csv(f'./{INPUT_DIRECTORY}/stathist_liin_with_risk_score_removal.csv', index=False)
+#     static_file_removal.to_csv(f'./{INPUT_DIRECTORY}/cand_linn_removal.csv', index=False)
 
-    return static_file_removal, dynamic_file_removal
+#     return static_file_removal, dynamic_file_removal
 
 
 if __name__ == '__main__':
