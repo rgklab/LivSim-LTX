@@ -55,5 +55,5 @@ dataPreparation/SRTR
 FakeInput/
 LivSim_Output/
 LivSim_Input/postprocessed
-LivSim_Input/processed
+LivSim_Input/
 **/LivSim_Processing/*.txt
