@@ -134,7 +134,7 @@ def load_sas(verbose=0):
     vprint("Saving CAND_LIIN, STATHIST_LIIN to CSV...", verbose)
         
     cand_liin.to_csv(f'{INPUT_DIRECTORY}/cand_liin.csv', index=False)
-    stathist_liin.to_csv(f'{INPUT_DIRECTORY}/SRTR_2023_simulator_stathist_liin.csv')
+    stathist_liin.to_csv(f'{INPUT_DIRECTORY}/SRTR_2023_simulator_stathist_liin.csv', index=False)
 
     vprint("CAND_LIIN, STATHIST_LIIN saved successfully!", verbose)
 

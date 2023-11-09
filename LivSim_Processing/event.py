@@ -49,12 +49,12 @@ def Arrival(arrivalinfo, Sim, Stat, OPTN):
             newpatient.MELD = nump.rint(newpatient.lMELD + 1.32*(137-effective_na)-(0.033*newpatient.lMELD*(137-effective_na)))
     
     else: #if sodium policy not selected
-
+        pass
         #bound the sodium score
-        if newpatient.MELD < 6:
-            newpatient.MELD = 6
-        elif newpatient.MELD > 40:
-            newpatient.MELD = 40
+        # if newpatient.MELD < 6:
+        #     newpatient.MELD = 6
+        # elif newpatient.MELD > 40:
+        #     newpatient.MELD = 40
 
 
     #Apply Status1 and HCC exceptions (if applicable)
@@ -146,10 +146,10 @@ def Progression(proginfo, Sim, Stat, OPTN, reps):
                     patient.Inactive = proginfo[10].astype(int)
 
                     #set bound on MELD score
-                    if patient.MELD <6:
-                        patient.MELD =6
-                    elif patient.MELD >40:
-                        patient.MELD = 40
+                    # if patient.MELD <6:
+                    #     patient.MELD =6
+                    # elif patient.MELD >40:
+                    #     patient.MELD = 40
 
                     #Update Allocation MELD based on policy (if applicable)
                     if Sim.sodium ==1 and patient.Status1 != 1 and patient.HCC != 1:
