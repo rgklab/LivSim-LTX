@@ -77,7 +77,8 @@ if __name__ =="__main__":
 	import entity
 
 	#########################################################Setting########################################################
-	ndsa = 709  # number of DSAs 709 for SRTR
+	# ndsa = 709  # number of DSAs 709 for SRTR
+	ndsa = 867
 	fake_ndsa = 58
 	i_initial = 1  # Use initial waiting list 1=yes 0=no
 	exclude_hi_pr = 0  # 1=Exclude Hawaii and Puerto Rico
@@ -445,7 +446,8 @@ if __name__ =="__main__":
 
 	DSA_column = ['Year', 'Replication #', 'Replication #']	
 
-	for i in range(0, 709): DSA_column.append("DSA {0}".format(i)) # DSA need to change
+	# for i in range(0, 709): DSA_column.append("DSA {0}".format(i)) # DSA need to change
+	for i in range(0, 867): DSA_column.append("DSA {0}".format(i))
 
 	record_ydeaths = pd.DataFrame(data = Sim.record_ydeaths)
 	record_ydeaths.columns = DSA_column	

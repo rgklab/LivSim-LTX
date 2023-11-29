@@ -2,7 +2,8 @@ import entity, allocate
 import numpy as nump
 import datetime
 from copy import deepcopy
-ndsa = 709
+# ndsa = 709
+ndsa = 867
 
 #######################################################################Event Processes####################################################################################
 def Arrival(arrivalinfo, Sim, Stat, OPTN):

@@ -149,6 +149,8 @@ def load_sample_csv(folder='./experiment'):
                                             'REC_TX_DT'])
     dynamic_file = pd.read_csv(f'{folder}/SRTR_2023_simulator_stathist_liin.csv', parse_dates=['CANHX_BEGIN_DT', 'CANHX_END_DT'])
 
+    # impute DSA info
+    static_file = static_file[static_file['CAN_LISTING_CTR_ID'].notna()] #TODO: fix this
     return static_file, dynamic_file
 
 
@@ -169,8 +171,8 @@ def create_donors(organ_file):
     donor_df['Donor ABO Blood Type'] = donor_df['Donor ABO Blood Type'].apply(get_blood_type)
     donor_df = donor_df.dropna()
     donor_df = donor_df.drop_duplicates(subset=['Organ ID'])
-    donor_df = donor_df[donor_df['DSA ID1'] < 709]
-    donor_df = donor_df.sample(frac=0.3145)
+    # donor_df = donor_df[donor_df['DSA ID1'] < 709]
+    donor_df = donor_df.sample(frac=0.552)
     donor_df = donor_df.sort_values(by='Donor Arrival Time')
     donor_df.to_csv(f'./{OUTPUT_RESULT_DIRECTORY}/SRTR_Donors.csv', index=False)
 
@@ -185,7 +187,6 @@ def fill_static_info(livsim_file, static_file):
     #     get_static_features, axis=1, result_type='expand').values)
     data_to_fill = np.array(static_file.apply(
         get_static_features, axis=1, result_type='expand').values)
-
     livsim_file["Patient ABO Blood Type"] = data_to_fill[:,0]
     livsim_file["Patient HCC Status"] = data_to_fill[:, 1]
     livsim_file["Status1"] = data_to_fill[:, 2]
@@ -232,12 +233,14 @@ def create_patient(static_file, dynamic_file, score: str = 'MELD'):
     patient_df = fill_static_info(patient_df, static_file_after)
     patient_df['Replication#'] = 1
     waitlist_df = fill_static_info(waitlist_df, static_file_before)
-    patient_df = patient_df[patient_df['DSA ID1'] < 709]
-    waitlist_df = waitlist_df[waitlist_df['DSA ID1'] < 709]
+    # no reason to cap DSA
+    # patient_df = patient_df[patient_df['DSA ID1'] < 709]
+    # waitlist_df = waitlist_df[waitlist_df['DSA ID1'] < 709]
     static_file = static_file.drop(columns=['CAN_GENDER'])
     dynamic_allocation = dynamic_file.merge(static_file, on='PX_ID', how='inner',  suffixes=('_x', ''))
     patient_meld = dynamic_allocation.groupby(by=['PX_ID']).apply(get_initial_meld, score=score)
-    patient_meld = patient_meld.reset_index().dropna()
+    # patient_meld = patient_meld.reset_index().dropna()
+    patient_meld = patient_meld.reset_index()
     patient_meld.rename(columns={'PX_ID': 'Patient ID'}, inplace=True)
     patient_df = patient_df.merge(patient_meld, on='Patient ID', how='inner')
     patient_df['Patient Allocation MELD'] = patient_df['patient_meld']
@@ -297,7 +300,7 @@ def create_status(dynamic_file, static_file, available_patient, score: str = 'ME
     status_df['DSA ID1'] = status_df['CAN_LISTING_CTR_ID']
     status_df['DSA ID2'] = status_df['CAN_LISTING_CTR_ID']
     status_df = status_df.drop(columns=['PX_ID', 'CAN_LISTING_CTR_ID'])
-    status_df = status_df[status_df['DSA ID1'] < 709]
+    # status_df = status_df[status_df['DSA ID1'] < 709]
     status_df = status_df[
         status_df['Status Event Time'] <= relativedelta(SIMULATOR_END_TIME, SIMULATOR_START_TIME).years]
 
@@ -339,7 +342,7 @@ def main(score: str = "MELD"):
     available_patient = pd.concat([patient_df['Patient ID'], waitlist_df['Patient ID']], axis=0)
     create_status(dynamic_file_removal, static_file_removal, available_patient, score)
     create_geography_parnter()
-    load_raw_donor_sas()
+    # load_raw_donor_sas()  # call only on the first run
     tx_li = pd.read_csv(f'./{INPUT_DIRECTORY}/tx_li.csv', parse_dates=['REC_TX_DT'])
     create_donors(tx_li)
 
@@ -347,7 +350,8 @@ def main(score: str = "MELD"):
 def create_geography_parnter():
     """create Input_Geography.txt, Input_SPartners.txt"""
 
-    matrix = np.zeros((709, 709), dtype=np.int8)
+    # matrix = np.zeros((709, 709), dtype=np.int8)
+    matrix = np.zeros((867, 867), dtype=np.int8)
     np.savetxt(f'./{OUTPUT_RESULT_DIRECTORY}/SRTR_Input_Geography.txt', matrix, fmt='%.0f\n')
     np.savetxt(f'./{OUTPUT_RESULT_DIRECTORY}/SRTR_Input_SPartners.txt', matrix, fmt='%.0f\n')
 

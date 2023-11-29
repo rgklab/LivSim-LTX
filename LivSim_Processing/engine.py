@@ -1,7 +1,8 @@
 #!/sscc/opt/anaconda3/bin/python
 import numpy as nump
 
-ndsa = 709 #number of DSAs
+# ndsa = 709 #number of DSAs
+ndsa = 867
 
 ###################################################################Simulation Engine Classes#####################################################
 class Event:

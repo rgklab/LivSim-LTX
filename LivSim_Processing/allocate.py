@@ -2,7 +2,8 @@ import numpy as nump
 from copy import deepcopy
 
 import config
-ndsa = 709
+# ndsa = 709
+ndsa = 867
 #####################################################Organ Allocation Procedures, Offer Routines, and Matching Functions#######################################################################
 def Allocate(organ, OPTN, Sim, Regions, SharingPartners, Patients_Accept, Donor_Accept, DSA_Avg_Times, AcceptanceModelS1, AcceptanceModel):
     """
